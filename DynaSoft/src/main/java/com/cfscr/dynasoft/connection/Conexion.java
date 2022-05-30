@@ -23,10 +23,15 @@ public class Conexion {
        
     public static Connection getConnection(){
         
-        String ConexionUrl = "jdbc:sqlserver://PABLOELIZONDOPC:1433"
+        /*String ConexionUrl = "jdbc:sqlserver://PABLOELIZONDOPC:1433"
                            + "databaseName=DB_INT_SOFTLAND;"
                            + "user=usuarioSQL;"
-                           + "password=sql12345;"
+                           + "password=Rot647598;"
+                           + "loginTimeout=30;";*/
+        String ConexionUrl = "jdbc:sqlserver://PABLOELIZONDOPC:1433;"
+                           + "databaseName=DB_INT_SOFTLAND;"
+                           + "user=usuarioSQL;"
+                           + "password=Rot647598;"
                            + "loginTimeout=30;";
         try{
             Connection con = DriverManager.getConnection(ConexionUrl);

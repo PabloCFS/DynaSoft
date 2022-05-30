@@ -62,11 +62,13 @@ public class DAOusuario extends Conexion{
     /**LISTAR USUARIOS**/
     public ArrayList<Usuario> ListarUsuarios(){
         ArrayList<Usuario> usuario = new ArrayList<>();
-        
+        String SQL_LISTAR;
+        CallableStatement csta;
+                
         try{
-            String SQL_LISTAR = "LISTAR_USUARIOS";
+             SQL_LISTAR = "LISTAR_USUARIOS";
             
-            CallableStatement csta = cn.prepareCall(SQL_LISTAR);
+            csta = cn.prepareCall(SQL_LISTAR);
             rs = csta.executeQuery();
             
             while(rs.next()){

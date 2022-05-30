@@ -1,0 +1,5 @@
+[Enviroment]::SetEnvironmetVariable("JAVA_HOME", "C:\Program Files\Java\jdk-11.0.11", "Machine")
+
+$OLDPATH = [System.Environment]::GetEnvironmentVariable('PATH' 'machine')
+$JAVAPATH = [System.Environment]::GetEnvironmentVariable('JAVA_HOME', 'machine')
+$NEWPATH = "$OLDPATH;$JAVAPATH\bin"
