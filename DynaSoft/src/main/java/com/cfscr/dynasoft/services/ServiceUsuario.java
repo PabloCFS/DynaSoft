@@ -16,6 +16,8 @@ public interface ServiceUsuario {
     
     ArrayList<Usuario> obtenerTodosUsuarios();
     
+    Usuario obtenerUsuario(String nombre, String clave);
+    
     void CargarUsuario(ArrayList<Usuario> usuarios);
 
 }

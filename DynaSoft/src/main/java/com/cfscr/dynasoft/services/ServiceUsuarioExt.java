@@ -17,5 +17,8 @@ public interface ServiceUsuarioExt extends ServiceUsuario{
     ArrayList<Usuario> obtenerTodosUsuarios();
     
     @Override
+    Usuario obtenerUsuario(String nombre, String contrasenia);
+    
+    @Override
     void CargarUsuario(ArrayList<Usuario> usuario);
 }

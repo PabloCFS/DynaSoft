@@ -27,6 +27,13 @@ public class ServiceUsuarioImpl implements ServiceUsuarioExt {
     }
     
     @Override
+    public Usuario obtenerUsuario(String nombre, String contrasenia){
+        Usuario nuevoUsuario = daoUsuario.obtenerUsuario(nombre);
+       
+        return nuevoUsuario;
+    }
+    
+    @Override
     public void CargarUsuario(ArrayList<Usuario> usuarios) {
         excel.cargarExcel(usuarios);
         excel.crearExcel();
