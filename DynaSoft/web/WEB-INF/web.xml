@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <display-name>Reporteria DynaSoft</display-name>
+
+    <welcome-file-list>
+        <welcome-file>Home.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>com.cfscr.dynasoft.controllers.ServletLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ServletLogOut</servlet-name>
+        <servlet-class>com.cfscr.dynasoft.controllers.ServletLogOut</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletLogOut</servlet-name>
+        <url-pattern>/ServletLogOut</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ServletConsultarDocumentos</servlet-name>
+        <servlet-class>com.cfscr.dynasoft.controllers.ServletConsultarDocumentos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletConsultarDocumentos</servlet-name>
+        <url-pattern>/ServletConsultarDocumentos</url-pattern>
+    </servlet-mapping>
+</web-app>

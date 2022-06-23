@@ -1,0 +1,261 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 jun. 2022, 10:58:41
+    Author     : pablo.elizondo
+*/
+
+/**Inclusion de Fuentes********************************************************/
+@font-face{
+    font-family: MontI;
+    src: url("../Sources/Fonts/Montserrat-Italic-VariableFont_wght.ttf");
+}
+@font-face{
+    font-family: Mont;
+    src: url("../Sources/Fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+/**Estilos del Body************************************************************/
+.body{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    background-image: url("../Sources/Images/eolicas.jpg");
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+}
+
+/*SECCION DE SELECCION DE FECHAS Y CONSULTA DE INFORMACION*/
+.section-listarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.container-listarDocs{
+    display: flex;
+    position: static;
+    
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.div-form{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 75%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.form-listarDocs{
+    display: flex;
+    position: static;
+    
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.columns-2{
+    display: flex;
+    position: static;
+    
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.columnsListarDocs{
+    display: flex;
+    position: static;
+    
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 33.3333%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.label-listarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 125%;
+    line-height: 150%;
+    color: #000000;
+    text-align: center;
+}
+
+.date-listarDocs{
+    display: block;
+    position: static;
+    
+    align-content: center;
+    align-items: center;
+    
+    margin: 1% 0px 0px 0px;
+    padding: 1% 1% 1% 1%;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 120%;
+    color: #000000;
+    text-align: center;
+    
+    background-color: #84DB00;
+    border-radius: 10px;
+}
+
+.button-submit-listarDocs{
+    display: flex;
+    position: relative;
+    
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 2% 0px 2% 0px;
+    
+    width: 35%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 400;
+    font-size: 120%;
+    line-height: 100%;
+    background-color: #84BD00;
+    color: #000000;
+    text-align: center;
+    
+    border-radius: 10px;
+}
+
+.imagenes-iconos{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 12%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+/*SECCION DONDE SE MUESTRA LA TABLA CON LA INFORMACION*/
+
+
+
