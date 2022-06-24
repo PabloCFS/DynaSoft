@@ -11,6 +11,7 @@ import com.cfscr.dynasoft.entities.Usuario;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +21,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -44,7 +47,7 @@ public class ManipulacionExcel {
     }
     
     /*CARGAR DOCUMENTOS ELECTRONICOS*/
-    public void cargarRegistros(ArrayList<DocumentoElectronico> documentos){
+    public void cargarRegistros(ArrayList<DocumentoElectronico> documentos) {
         Row row = sheet.createRow(0);
         
         row.createCell(0).setCellValue("Cliente"); row.createCell(1).setCellValue("Nombre"); row.createCell(2).setCellValue("Tipo");
@@ -62,13 +65,13 @@ public class ManipulacionExcel {
             row.createCell(1).setCellValue(documentos.get(i).getNombre());
             row.createCell(2).setCellValue(documentos.get(i).getTipo());
             row.createCell(3).setCellValue(documentos.get(i).getDocumento());
-            row.createCell(4).setCellValue(documentos.get(i).getCreateDate());
+            row.createCell(4).setCellValue(castearDate(documentos.get(i).getCreateDate()));
             row.createCell(5).setCellValue(documentos.get(i).getTipoAsiento());
             row.createCell(6).setCellValue(documentos.get(i).getNitReceptor());
-            row.createCell(7).setCellValue(documentos.get(i).getContieneErrores());
-            row.createCell(8).setCellValue(documentos.get(i).getErrorWS());
-            row.createCell(9).setCellValue(documentos.get(i).getErrorSoftland());
-            row.createCell(10).setCellValue(documentos.get(i).getEnviado());
+            row.createCell(7).setCellValue(castearChar(documentos.get(i).getContieneErrores()));
+            row.createCell(8).setCellValue(castearChar(documentos.get(i).getErrorWS()));
+            row.createCell(9).setCellValue(castearChar(documentos.get(i).getErrorSoftland()));
+            row.createCell(10).setCellValue(castearChar(documentos.get(i).getEnviado()));
             row.createCell(11).setCellValue(documentos.get(i).getMoneda());
             row.createCell(12).setCellValue(documentos.get(i).getTotalGravado());
             row.createCell(13).setCellValue(documentos.get(i).getTotalExento());
@@ -86,18 +89,17 @@ public class ManipulacionExcel {
         }
     }
     
-    /*ELIMINAR ESTA FUNCION*/
-    public void cargarExcel(ArrayList<Usuario> usuarios){
-        Row row = sheet.createRow(0);
+    private String castearDate(Date fecha){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(fecha);
+    }
+    
+    private String castearChar(char dato){
+        String retorno = String.valueOf(dato);
         
-        row.createCell(0).setCellValue("Nombre");
-        row.createCell(1).setCellValue("Clave");
-        
-        for(int i=0; i<usuarios.size(); i++){
-            row = sheet.createRow(i+1);
-            
-            row.createCell(0).setCellValue(usuarios.get(i).getNombre());
-            row.createCell(1).setCellValue(usuarios.get(i).getClave());
+        if(retorno.equals("X")){
+            retorno = "NULL";
         }
+        return retorno;
     }
 }

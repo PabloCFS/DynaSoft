@@ -11,11 +11,8 @@ import com.cfscr.dynasoft.entities.Usuario;
 import com.cfscr.dynasoft.services.ServiceDocElectronicoImpl;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 
 /**
  *
@@ -46,38 +43,12 @@ public class NewMain2 {
 
         String pFecha1= "2022-06-09 00:00:00.000";
         String pFecha2= "2022-06-11 00:00:00.000";        
-        
-        System.out.println("Main-50 "+pFecha1);
-        System.out.println("Main-51 "+pFecha2);
+
         nc = serviceDoc.obtenerDocumentos(pFecha1, pFecha2, 'C');
         System.out.println("Fui a la base");
         
-        for(int i=0; i<nc.size(); i++){
-            System.out.println("CLIENTE -> " + nc.get(i).getCliente());
-            System.out.println("FECHA -> " + nc.get(i).getCreateDate());
-        }
-        
         serviceDoc.cargarExcel(nc);
         System.out.println("Cargue el excel");
-        
-        
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        
-        /*
-        Date fecha2 = null;
-        Date fecha1 = formatter.parse(pFecha1);
-        String formattedDateString = formatter.format(fecha1);
-        
-        System.out.println("============================");
-        System.out.println(fecha1);
-        System.out.println(formattedDateString);
-        System.out.println("============================");
-        */
-        
-        
-        //serviceDoc.obtenerDocumentos(fecha1, fecha2, 'F');
-        
         
     }
     

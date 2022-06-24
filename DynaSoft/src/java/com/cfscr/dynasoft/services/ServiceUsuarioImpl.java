@@ -35,7 +35,7 @@ public class ServiceUsuarioImpl implements ServiceUsuarioExt {
     
     @Override
     public void CargarUsuario(ArrayList<Usuario> usuarios) {
-        excel.cargarExcel(usuarios);
+        //excel.cargarExcel(usuarios);
         excel.crearExcel();
     }   
 }
