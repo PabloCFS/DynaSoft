@@ -69,7 +69,7 @@ public class DAOdocElectronico extends Conexion{
             if(rs.getString("FACTURA") == null) { documento.setDocumento(null);} else { documento.setDocumento(rs.getString("FACTURA"));}
             if(rs.getDate("FECHA") == null) { documento.setCreateDate(null);} else { documento.setCreateDate(rs.getDate("FECHA"));}
             if(rs.getString("MODULO") == null) { documento.setTipoAsiento(null);} else { documento.setTipoAsiento(rs.getString("MODULO"));}
-            if(rs.getString("NIVEL_PRECIO") == null) { documento.setMoneda(null);} else { documento.setMoneda(rs.getString("NIVEL_PRECIO"));}
+            if(rs.getString("MONEDA_FACTURA") == null) { documento.setMoneda(null);} else { documento.setMoneda(rs.getString("MONEDA_FACTURA"));}
             if(rs.getString("RUBRO1") == null) { documento.setCrm(null);} else { documento.setCrm(rs.getString("RUBRO1"));}
         }
         else if(tipoConsulta == 'N'){
@@ -77,8 +77,8 @@ public class DAOdocElectronico extends Conexion{
             if(rs.getString("TIPO") == null) {documento.setTipo(null);} else { documento.setTipo(rs.getString("TIPO"));}
             if(rs.getString("DOCUMENTO") == null) { documento.setDocumento(null);} { documento.setDocumento(rs.getString("DOCUMENTO"));}
             if(rs.getDate("CreateDate") == null) { documento.setCreateDate(null);} else { documento.setCreateDate(rs.getDate("CreateDate"));}
-            if(rs.getString("TIPO_ASIENTO") == null) { documento.setDocumento(null);} { documento.setDocumento(rs.getString("TIPO_ASIENTO"));}
-            if(rs.getString("MONEDA") == null) {documento.setTipo(null);} else { documento.setTipo(rs.getString("MONEDA"));}
+            if(rs.getString("TIPO_ASIENTO") == null) { documento.setTipoAsiento(null);} { documento.setTipoAsiento(rs.getString("TIPO_ASIENTO"));}
+            if(rs.getString("MONEDA") == null) {documento.setMoneda(null);} else { documento.setMoneda(rs.getString("MONEDA"));}
             documento.setCrm("N/A");
         }
         
