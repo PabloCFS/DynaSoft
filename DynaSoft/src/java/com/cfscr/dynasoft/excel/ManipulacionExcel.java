@@ -6,12 +6,10 @@
 package com.cfscr.dynasoft.excel;
 
 import com.cfscr.dynasoft.entities.DocumentoElectronico;
-import com.cfscr.dynasoft.entities.Usuario;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,16 +61,18 @@ public class ManipulacionExcel {
             
             row.createCell(0).setCellValue(documentos.get(i).getCliente());
             row.createCell(1).setCellValue(documentos.get(i).getNombre());
-            row.createCell(2).setCellValue(documentos.get(i).getTipo());
+            row.createCell(2).setCellValue(tipoDocumento(documentos.get(i).getTipo()));
             row.createCell(3).setCellValue(documentos.get(i).getDocumento());
             row.createCell(4).setCellValue(castearDate(documentos.get(i).getCreateDate()));
-            row.createCell(5).setCellValue(documentos.get(i).getTipoAsiento());
+            row.createCell(5).setCellValue(pertenceA(documentos.get(i).getTipoAsiento()));
             row.createCell(6).setCellValue(documentos.get(i).getNitReceptor());
             row.createCell(7).setCellValue(castearChar(documentos.get(i).getContieneErrores()));
             row.createCell(8).setCellValue(castearChar(documentos.get(i).getErrorWS()));
             row.createCell(9).setCellValue(castearChar(documentos.get(i).getErrorSoftland()));
             row.createCell(10).setCellValue(castearChar(documentos.get(i).getEnviado()));
-            row.createCell(11).setCellValue(documentos.get(i).getMoneda());
+            
+            row.createCell(11).setCellValue(tipoMoneda(documentos.get(i).getMoneda()));
+            
             row.createCell(12).setCellValue(documentos.get(i).getTotalGravado());
             row.createCell(13).setCellValue(documentos.get(i).getTotalExento());
             row.createCell(14).setCellValue(documentos.get(i).getTotalVenta());
@@ -89,11 +89,64 @@ public class ManipulacionExcel {
         }
     }
     
+    //Funcion para mostrar el tipo de moneda
+    private String tipoMoneda(String moneda){
+        switch(moneda){
+            case "D":
+                moneda = "USD";
+                break;
+            case "L":
+                moneda = "CRC";
+                break;
+            case "USD":
+                moneda = "USD";
+                break;
+            case "CRC":
+                moneda = "CRC";
+                break;
+        }
+        return moneda;
+    }
+    
+    //Funcion para mostrar el nombre del modulo
+    private String pertenceA(String modulo){
+        switch(modulo){
+            case "FA":
+                modulo = "Facturación";
+                break;
+            case "CC":
+                modulo = "Cuentas por Cobrar";
+                break;
+        }
+        return modulo;
+    }
+    
+    //Funcion para mostrar el tipo de documento
+    private String tipoDocumento(String tipoDocumento){
+        switch(tipoDocumento) {
+            case "DE_FA":
+                tipoDocumento = "Factura";
+                break;
+            case "DE_FAC_EXP":
+                tipoDocumento = "Factura exportación";
+                break;
+            case "DE_NC":
+                tipoDocumento = "Nota crédito";
+                break;
+            case "N/C":
+                tipoDocumento = "Nota crédito";
+                break;
+        }
+        return tipoDocumento;
+    }
+    
+    //Funcion para pasar datos tipo DATE a STRING
     private String castearDate(Date fecha){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(fecha);
     }
     
+    //Funcion para pasar datos tipo CHAR a STRING
     private String castearChar(char dato){
         String retorno = String.valueOf(dato);
         

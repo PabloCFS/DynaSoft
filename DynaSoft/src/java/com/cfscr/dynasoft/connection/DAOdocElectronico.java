@@ -49,7 +49,10 @@ public class DAOdocElectronico extends Conexion{
                 rs = csta.executeQuery();                                       System.out.println("DAO-63");
                 
                 while(rs.next()){
-                    docsElectronicos.add(evaluaConsultas(rs, tipoConsulta));    System.out.println("DAO-72");
+                    DocumentoElectronico docElectronico = evaluaConsultas(rs, tipoConsulta);
+                    if(docElectronico.getTipoAsiento() != null){
+                        docsElectronicos.add(docElectronico);   
+                    }
                 }
             }
         }catch(SQLException ex){
