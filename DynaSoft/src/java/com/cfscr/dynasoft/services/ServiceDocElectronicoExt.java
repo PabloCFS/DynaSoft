@@ -19,4 +19,6 @@ public interface ServiceDocElectronicoExt extends ServiceDocElectronico{
     @Override
     void cargarExcel(ArrayList<DocumentoElectronico> documentos);
 
+    @Override
+    ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos);
 }

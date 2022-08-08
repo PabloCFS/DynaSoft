@@ -7,8 +7,11 @@ package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.connection.DAOdocElectronico;
 import com.cfscr.dynasoft.entities.DocumentoElectronico;
-import com.cfscr.dynasoft.excel.ManipulacionExcel;
+import com.cfscr.dynasoft.excel.EscrituraExcel;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,12 +19,17 @@ import java.util.ArrayList;
  */
 public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     private final DAOdocElectronico daoDocElectronico = new DAOdocElectronico();
-    private final ManipulacionExcel excel = new ManipulacionExcel();
+    private final EscrituraExcel excel = new EscrituraExcel();
     
     @Override
     public ArrayList<DocumentoElectronico> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta){
-        ArrayList<DocumentoElectronico> documentos; System.out.println("ServiceDI-24");
-        documentos = daoDocElectronico.ListarDocsElectronicos(pFecha1, pFecha2, pTipoCosulta); System.out.println("ServiceDI-25");
+        ArrayList<DocumentoElectronico> documentos = new ArrayList<>();
+        try {                                       
+            documentos = daoDocElectronico.ListarDocsElectronicos(pFecha1, pFecha2, pTipoCosulta);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceDocElectronicoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return documentos;
     }
 
@@ -29,5 +37,13 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     public void cargarExcel(ArrayList<DocumentoElectronico> documentos){
         excel.cargarRegistros(documentos);
         excel.crearExcel();
+    }
+    
+    @Override
+    public ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos){
+        
+        
+        
+        return documentos;
     }
 }

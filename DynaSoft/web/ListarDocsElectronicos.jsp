@@ -25,7 +25,7 @@
         <section class="section-listarDocs">
             <container class="container-listarDocs">
                 <div class="div-form">
-                    <form class="form-listarDocs" action="ServletConsultarDocumentos" method="post" nam="myForm">
+                    <form class="form-listarDocs" action="ServletConsultarDocumentos" method="post" nam="myForm2">
                         <div class="columns-2 w-row">
                             <div class="column-3 w-col w-col-4 columnsListarDocs">
                                 <label for="field" class="field-label-3 label-listarDocs">Fecha Inicio</label>

@@ -26,7 +26,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletConsultarDocumentos", urlPatterns = {"/ServletConsultarDocumentos"})
 public class ServletConsultarDocumentos extends HttpServlet {
     
-    ServiceDocElectronicoImpl serviceDoc;
+    ServiceDocElectronicoImpl serviceDoc = new ServiceDocElectronicoImpl();
     
     public ServletConsultarDocumentos(){
         super();
@@ -49,32 +49,21 @@ public class ServletConsultarDocumentos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         HttpSession session = request.getSession();
          
-         String fecha1, fecha2;
+         
+         
         try{
-            fecha1 = (request.getParameter("fecha1"));
-            fecha1 = fecha1 + " 00:00:00.000";
-            
-            fecha2 = (request.getParameter("fecha2"));
-            fecha2 = fecha2 + " 00:00:00.000";
             
             /*REVISAR*/
             //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             //Date fecha_1 = formatter.parse(fecha1);
             /*REVISAR*/
-            ArrayList<DocumentoElectronico> documentos; System.out.println("Servlet-66");
             
-            fecha1= "2022-06-09 00:00:00.000"; System.out.println("Servlet-68");
-            fecha2= "2022-06-11 00:00:00.000"; System.out.println("Servlet-69");
-            documentos = serviceDoc.obtenerDocumentos(fecha1, fecha2, 'C'); System.out.println("Servlet-70");
-            System.out.println("Servlet-71");
+            /*
             
-            serviceDoc.cargarExcel(documentos);
-            System.out.println("Cargar excel");
-            
-            //request.setAttribute("documentos", documentos);
-            //session.setAttribute("documentos", documentos);
+            */
+            //
+            //
             
             request.getRequestDispatcher("ListarDocsElectronicos.jsp").forward(request, response);
         } catch(ServletException | IOException  e){
@@ -108,7 +97,26 @@ public class ServletConsultarDocumentos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        
+        String fecha1, fecha2;
+        fecha1 = (request.getParameter("fecha1"));
+            fecha1 = fecha1 + " 00:00:00.000";
+            
+            fecha2 = (request.getParameter("fecha2"));
+            fecha2 = fecha2 + " 00:00:00.000";
+            
+            System.out.println("Fecha 1 | "+fecha1 +"\n" + "Fecha 2 | "+fecha2);
+            
+            ArrayList<DocumentoElectronico> documentos = new ArrayList<>();     System.out.println("Servlet-68");
+            documentos = serviceDoc.obtenerDocumentos(fecha1, fecha2, 'C');     System.out.println("Servlet-69");
+            
+            serviceDoc.cargarExcel(documentos);
+            System.out.println("Cargar excel");
+            
+            request.setAttribute("documentos", documentos);
+            session.setAttribute("documentos", documentos);
+        request.getRequestDispatcher("ListarDocsElectronicos.jsp").forward(request, response);
     }
 
     /**

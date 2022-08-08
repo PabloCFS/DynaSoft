@@ -11,11 +11,13 @@ import java.util.ArrayList;
 
 /**
  *
- * @author pablo.elizondo
+ * @author pablo.elizondo       
  */
 public interface ServiceDocElectronico {
     ArrayList<DocumentoElectronico> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta);
 
     void cargarExcel(ArrayList<DocumentoElectronico> documentos);
+    
+    ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos);
     
 }

@@ -12,6 +12,10 @@ import java.sql.Date;
  * @author pablo.elizondo
  */
 public class DocumentoElectronico {
+    
+    private String aplicacion, documentoOC;
+    private float monto;
+    
     private String cliente, nombre, tipo, documento;
     private Date createDate;
     private String tipoAsiento, nitReceptor;
@@ -19,8 +23,13 @@ public class DocumentoElectronico {
     private String moneda;
     private float totalGravado, totalExento, totalVenta, totalDescuentos, totalVentaNeta, totalImpuesto, totalComprobante;
     private String crm;
-    
+    private float tipoCambio;
+            
     public DocumentoElectronico() {
+        this.aplicacion = "";
+        this.documentoOC = "";
+        this.monto = 0.f;
+        
         this.cliente = "";
         this.nombre = "";
         this.tipo = "";
@@ -41,12 +50,17 @@ public class DocumentoElectronico {
         this.totalImpuesto = 0.f;
         this.totalComprobante = 0.f;
         this.crm = "";
+        this.tipoCambio = 0.f;
     }
 
-    public DocumentoElectronico(String pCliente, String pNombre, String pTipo, String pDocumento, Date pCreateDate, String pTipoAsiento, String pNitReceptor,
+    public DocumentoElectronico(String pAplicacion, String pDocumentoOC, float pMonto, String pCliente, String pNombre, String pTipo, String pDocumento, Date pCreateDate, String pTipoAsiento, String pNitReceptor,
                        char pContieneErrores, char pErrorWS, char pErrorSoftland, char pEnviado, String pMoneda, float pTotalGravado,
                        float pTotalExento, float pTotalVenta, float pTotalDescuentos, float pTotalVentaNeta, float pTotalImpuesto,
-                       float pTotalComprobante, String  pCrm) {
+                       float pTotalComprobante, String  pCrm, float pTipoCambio) {
+        this.aplicacion = pAplicacion;
+        this.documentoOC = pDocumentoOC;
+        this.monto = pMonto;
+        
         this.cliente = pCliente;
         this.nombre = pNombre;
         this.tipo = pTipo;
@@ -67,8 +81,12 @@ public class DocumentoElectronico {
         this.totalImpuesto = pTotalImpuesto;
         this.totalComprobante = pTotalComprobante;
         this.crm = pCrm;
+        this.tipoCambio = pTipoCambio;
     }
 
+    public void setAplicacion(String pAplicacion) { this.aplicacion = pAplicacion; }
+    public void setDocumentoOC(String pDocumentoOC) { this.documentoOC = pDocumentoOC; }
+    public void setMonto(float pMonto) { this.monto = pMonto; }
     public void setCliente(String pCliente) { this.cliente = pCliente; }
     public void setNombre(String pNombre) { this.nombre = pNombre; }
     public void setTipo(String pTipo) { this.tipo = pTipo; }
@@ -89,7 +107,11 @@ public class DocumentoElectronico {
     public void setTotalImpuesto(float pTotalImpuesto) { this.totalImpuesto = pTotalImpuesto; }
     public void setTotalComprobante(float pTotalComprobante) { this.totalComprobante = pTotalComprobante; }
     public void setCrm(String pCrm) { this.crm = pCrm; }
-    
+    public void setTipoCambio(float pTipoCambio) { this.tipoCambio = pTipoCambio; }
+     
+    public String getAplicacion() { return this.aplicacion; }
+    public String getDocumentoOC() { return this.documentoOC; }
+    public float getMonto() { return this.monto; }
     public String getCliente() { return this.cliente; }
     public String getNombre() { return this.nombre; }
     public String getTipo() { return this.tipo; }
@@ -108,6 +130,7 @@ public class DocumentoElectronico {
     public float getTotalDescuentos() { return this.totalDescuentos; }
     public float getTotalVentaNeta() { return this.totalVentaNeta; }
     public float getTotalImpuesto() { return this.totalImpuesto; }
-    public float getTotalComprobante() { return totalComprobante; }
-    public String getCrm() { return crm; }
+    public float getTotalComprobante() { return this.totalComprobante; }
+    public String getCrm() { return this.crm; }
+    public float getTipoCambio() { return this.tipoCambio; }
 }
