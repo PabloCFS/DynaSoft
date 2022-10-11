@@ -5,7 +5,7 @@
  */
 package com.cfscr.dynasoft.services;
 
-import com.cfscr.dynasoft.entities.DocumentoElectronico;
+import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
 
 import java.util.ArrayList;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
  * @author pablo.elizondo       
  */
 public interface ServiceDocElectronico {
-    ArrayList<DocumentoElectronico> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta);
+    ArrayList<DocumentosERP> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta);
 
-    void cargarExcel(ArrayList<DocumentoElectronico> documentos, ArrayList<DocumentosCRM> documentosCRM);
+    void cargarExcel(ArrayList<DocumentosERP> documentos, ArrayList<DocumentosCRM> documentosCRM);
     
-    ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos);
+    ArrayList<DocumentosERP> extraerOtrosCredtios(ArrayList<DocumentosERP> documentos);
     
 }

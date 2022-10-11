@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author pablo.elizondo
  */
-public class DocumentoElectronico {
+public class DocumentosERP {
     
     private String aplicacion, documentoOC;
     private float monto;
@@ -21,11 +21,11 @@ public class DocumentoElectronico {
     private String tipoAsiento, nitReceptor;
     private char contieneErrores, errorWS, errorSoftland, enviado;
     private String moneda;
-    private float totalGravado, totalExento, totalVenta, totalDescuentos, totalVentaNeta, totalImpuesto, totalComprobante;
+    private float totalGravado, totalExento, totalVenta, totalDescuentos, totalVentaNeta, totalImpuesto, totalComprobante, totalFactura;
     private String crm;
     private float tipoCambio;
             
-    public DocumentoElectronico() {
+    public DocumentosERP() {
         this.aplicacion = "";
         this.documentoOC = "";
         this.monto = 0.f;
@@ -49,14 +49,15 @@ public class DocumentoElectronico {
         this.totalVentaNeta = 0.f;
         this.totalImpuesto = 0.f;
         this.totalComprobante = 0.f;
+        this.totalFactura = 0.f;
         this.crm = "";
         this.tipoCambio = 0.f;
     }
 
-    public DocumentoElectronico(String pAplicacion, String pDocumentoOC, float pMonto, String pCliente, String pNombre, String pTipo, String pDocumento, Date pCreateDate, String pTipoAsiento, String pNitReceptor,
+    public DocumentosERP(String pAplicacion, String pDocumentoOC, float pMonto, String pCliente, String pNombre, String pTipo, String pDocumento, Date pCreateDate, String pTipoAsiento, String pNitReceptor,
                        char pContieneErrores, char pErrorWS, char pErrorSoftland, char pEnviado, String pMoneda, float pTotalGravado,
                        float pTotalExento, float pTotalVenta, float pTotalDescuentos, float pTotalVentaNeta, float pTotalImpuesto,
-                       float pTotalComprobante, String  pCrm, float pTipoCambio) {
+                       float pTotalComprobante, float pTotalFactura, String  pCrm, float pTipoCambio) {
         this.aplicacion = pAplicacion;
         this.documentoOC = pDocumentoOC;
         this.monto = pMonto;
@@ -80,6 +81,7 @@ public class DocumentoElectronico {
         this.totalVentaNeta = pTotalVentaNeta;
         this.totalImpuesto = pTotalImpuesto;
         this.totalComprobante = pTotalComprobante;
+        this.totalFactura = pTotalFactura;
         this.crm = pCrm;
         this.tipoCambio = pTipoCambio;
     }
@@ -106,6 +108,7 @@ public class DocumentoElectronico {
     public void setTotalVentaNeta(float pTotalVentaNeta) { this.totalVentaNeta = pTotalVentaNeta; }
     public void setTotalImpuesto(float pTotalImpuesto) { this.totalImpuesto = pTotalImpuesto; }
     public void setTotalComprobante(float pTotalComprobante) { this.totalComprobante = pTotalComprobante; }
+    public void setTotalFactura(float pTotalFactura) { this.totalFactura = pTotalFactura; }
     public void setCrm(String pCrm) { this.crm = pCrm; }
     public void setTipoCambio(float pTipoCambio) { this.tipoCambio = pTipoCambio; }
      
@@ -131,6 +134,7 @@ public class DocumentoElectronico {
     public float getTotalVentaNeta() { return this.totalVentaNeta; }
     public float getTotalImpuesto() { return this.totalImpuesto; }
     public float getTotalComprobante() { return this.totalComprobante; }
+    public float getTotalFactura() { return this.totalFactura; }
     public String getCrm() { return this.crm; }
     public float getTipoCambio() { return this.tipoCambio; }
 }

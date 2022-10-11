@@ -6,9 +6,11 @@
 package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.connection.DAOdocElectronico;
-import com.cfscr.dynasoft.entities.DocumentoElectronico;
+import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
-import com.cfscr.dynasoft.excel.EscrituraExcel;
+import com.cfscr.dynasoft.excel.EscrituraExcelComparativa;
+import com.cfscr.dynasoft.logic.Agrupacion;
+import com.cfscr.dynasoft.logic.Comparativa;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,11 +22,13 @@ import java.util.logging.Logger;
  */
 public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     private final DAOdocElectronico daoDocElectronico = new DAOdocElectronico();
-    private final EscrituraExcel excel = new EscrituraExcel();
+    private final EscrituraExcelComparativa excel = new EscrituraExcelComparativa();
+    private final Comparativa comparativa = new Comparativa();
+    private final Agrupacion agrupacion = new Agrupacion();
     
     @Override
-    public ArrayList<DocumentoElectronico> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta){
-        ArrayList<DocumentoElectronico> documentos = new ArrayList<>();
+    public ArrayList<DocumentosERP> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta){
+        ArrayList<DocumentosERP> documentos = new ArrayList<>();
         try {                                       
             documentos = daoDocElectronico.ListarDocsElectronicos(pFecha1, pFecha2, pTipoCosulta);
             
@@ -35,16 +39,17 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     }
 
     @Override
-    public void cargarExcel(ArrayList<DocumentoElectronico> documentos, ArrayList<DocumentosCRM> documentosCRM){
+    public void cargarExcel(ArrayList<DocumentosERP> documentos, ArrayList<DocumentosCRM> documentosCRM){
+        
         excel.cargarRegistrosERP(documentos);
         excel.cargarRegistrosCRM(documentosCRM);
+        excel.cargarRegistrosComparativa(comparativa.comparaListas(documentosCRM, documentos));
+        excel.cargarDocsAgrupados(agrupacion.agruparDocumentos(comparativa.comparaListas(documentosCRM, documentos)));
         excel.crearExcel();
     }
     
     @Override
-    public ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos){
-        
-        
+    public ArrayList<DocumentosERP> extraerOtrosCredtios(ArrayList<DocumentosERP> documentos){
         
         return documentos;
     }

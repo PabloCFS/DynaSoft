@@ -7,7 +7,7 @@ package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.connection.DAOusuario;
 import com.cfscr.dynasoft.entities.Usuario;
-import com.cfscr.dynasoft.excel.EscrituraExcel;
+import com.cfscr.dynasoft.excel.EscrituraExcelComparativa;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ServiceUsuarioImpl implements ServiceUsuarioExt {
     private final DAOusuario daoUsuario = new DAOusuario();
-    private final EscrituraExcel excel = new EscrituraExcel();
+    private final EscrituraExcelComparativa excel = new EscrituraExcelComparativa();
     
     @Override
     public ArrayList<Usuario> obtenerTodosUsuarios() {

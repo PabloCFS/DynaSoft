@@ -5,7 +5,8 @@
  */
 package com.cfscr.dynasoft.controllers;
 
-import com.cfscr.dynasoft.entities.DocumentoElectronico;
+import com.cfscr.dynasoft.entities.DocumentosERP;
+import com.cfscr.dynasoft.entities.DocumentosCRM;
 import com.cfscr.dynasoft.services.ServiceDocElectronicoImpl;
 
 import java.util.ArrayList;
@@ -108,10 +109,11 @@ public class ServletConsultarDocumentos extends HttpServlet {
             
             System.out.println("Fecha 1 | "+fecha1 +"\n" + "Fecha 2 | "+fecha2);
             
-            ArrayList<DocumentoElectronico> documentos = new ArrayList<>();     System.out.println("Servlet-68");
+            ArrayList<DocumentosERP> documentos = new ArrayList<>();     System.out.println("Servlet-68");
+            ArrayList<DocumentosCRM> documentosCRM = new ArrayList<>();
             documentos = serviceDoc.obtenerDocumentos(fecha1, fecha2, 'C');     System.out.println("Servlet-69");
             
-            serviceDoc.cargarExcel(documentos);
+            serviceDoc.cargarExcel(documentos,documentosCRM);
             System.out.println("Cargar excel");
             
             request.setAttribute("documentos", documentos);
