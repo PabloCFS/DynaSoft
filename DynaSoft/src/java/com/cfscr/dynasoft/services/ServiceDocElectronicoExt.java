@@ -6,6 +6,7 @@
 package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.entities.DocumentoElectronico;
+import com.cfscr.dynasoft.entities.DocumentosCRM;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public interface ServiceDocElectronicoExt extends ServiceDocElectronico{
     ArrayList<DocumentoElectronico> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta);
 
     @Override
-    void cargarExcel(ArrayList<DocumentoElectronico> documentos);
+    void cargarExcel(ArrayList<DocumentoElectronico> documentos, ArrayList<DocumentosCRM> documentosCRM);
 
     @Override
     ArrayList<DocumentoElectronico> extraerOtrosCredtios(ArrayList<DocumentoElectronico> documentos);

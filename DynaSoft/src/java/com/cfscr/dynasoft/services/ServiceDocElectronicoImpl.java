@@ -7,6 +7,7 @@ package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.connection.DAOdocElectronico;
 import com.cfscr.dynasoft.entities.DocumentoElectronico;
+import com.cfscr.dynasoft.entities.DocumentosCRM;
 import com.cfscr.dynasoft.excel.EscrituraExcel;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,8 +35,9 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     }
 
     @Override
-    public void cargarExcel(ArrayList<DocumentoElectronico> documentos){
-        excel.cargarRegistros(documentos);
+    public void cargarExcel(ArrayList<DocumentoElectronico> documentos, ArrayList<DocumentosCRM> documentosCRM){
+        excel.cargarRegistrosERP(documentos);
+        excel.cargarRegistrosCRM(documentosCRM);
         excel.crearExcel();
     }
     
