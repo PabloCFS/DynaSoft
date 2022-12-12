@@ -50,6 +50,7 @@ public class Comparativa {
                             miDocumento.setOportunidad(docsCRM.get(i).getOportunidad());
                             miDocumento.setTipo(docsERP.get(j).getTipo());
                             miDocumento.setCliente(docsCRM.get(i).getClientePotencial());
+                            miDocumento.setTema(docsCRM.get(i).getTema());
                             miDocumento.setFactura(docsERP.get(j).getDocumento());
                             miDocumento.setMonto(0.f);
                             miDocumento.setIngresoProfit(docsCRM.get(i).getEstProfit());
@@ -66,6 +67,7 @@ public class Comparativa {
                             miDocumento1.setOportunidad(docsCRM.get(i).getOportunidad());
                             miDocumento1.setTipo(docsERP.get(j).getTipo());
                             miDocumento1.setCliente(docsCRM.get(i).getClientePotencial());
+                            miDocumento1.setTema(docsCRM.get(i).getTema());
                             miDocumento1.setFactura(docsERP.get(j).getDocumento());
                             miDocumento1.setMonto(0.f);
                             miDocumento1.setIngresoProfit(docsCRM.get(i).getEstProfit());
@@ -82,6 +84,7 @@ public class Comparativa {
                             miDocumento2.setOportunidad(docsCRM.get(i).getOportunidad());
                             miDocumento2.setTipo(docsERP.get(j).getTipo());
                             miDocumento2.setCliente(docsCRM.get(i).getClientePotencial());
+                            miDocumento2.setTema(docsCRM.get(i).getTema());
                             miDocumento2.setFactura(docsERP.get(j).getDocumento());
                             miDocumento2.setMonto(0.f);
                             miDocumento2.setIngresoProfit(docsCRM.get(i).getEstProfit());
@@ -98,6 +101,7 @@ public class Comparativa {
                             miDocumento3.setOportunidad(docsCRM.get(i).getOportunidad());
                             miDocumento3.setTipo(docsERP.get(j).getTipo());
                             miDocumento3.setCliente(docsCRM.get(i).getClientePotencial());
+                            miDocumento3.setTema(docsCRM.get(i).getTema());
                             miDocumento3.setFactura(docsERP.get(j).getDocumento());
                             miDocumento3.setMonto(docsERP.get(j).getMonto());
                             miDocumento3.setIngresoProfit(docsCRM.get(i).getEstProfit());
@@ -130,6 +134,7 @@ public class Comparativa {
             miDocumento.setOportunidad(docsCRM.get(i).getOportunidad());
             miDocumento.setTipo("No Match ERP");
             miDocumento.setCliente(docsCRM.get(i).getClientePotencial());
+            miDocumento.setTema(docsCRM.get(i).getTema());
             miDocumento.setFactura(" - ");
             miDocumento.setMonto(0);
             miDocumento.setIngresoProfit(docsCRM.get(i).getEstProfit());
@@ -151,6 +156,7 @@ public class Comparativa {
             miDocumento.setOportunidad("No match CRM");
             miDocumento.setTipo(docsERP.get(i).getTipo());
             miDocumento.setCliente(" - ");
+            miDocumento.setTema(" - ");
             miDocumento.setFactura(docsERP.get(i).getDocumento());
             miDocumento.setMonto(docsERP.get(i).getMonto());
             miDocumento.setIngresoProfit(0);

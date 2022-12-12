@@ -17,9 +17,9 @@ import java.util.ArrayList;
  *
  * @author pablo.elizondo
  */
-public class DAOdocElectronico extends Conexion{
+public class DAOdocElectronico extends ConexionERP{
     private ResultSet rs;
-    private final Connection cn = Conexion.getConnection();
+    private final Connection cn = ConexionERP.getConnection();
     
     //TRAER DOCUMENTOS ELECTRONICOS DE LA BD
     public ArrayList<DocumentosERP> ListarDocsElectronicos(String pFecha1, String pFecha2, char tipoConsulta) throws SQLException {

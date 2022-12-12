@@ -24,11 +24,11 @@ public class Conexion {
     public static Connection getConnection(){
         
         /*ERP*/
-        String ConexionUrl =    "jdbc:sqlserver://xx:1433;"
-        + "databaseName=xx;"
-        + "user=sa;"
-        + "password=xx;"
-        + "loginTimeout=30;";
+        String ConexionUrl  = "jdbc:sqlserver://192.168.0.12:1433;"
+            + "databaseName=Softland;"
+            + "user=sa;"
+            + "password=Sql2014!Pablo;"
+            + "loginTimeout=30;";
         
         try{
             Connection con = DriverManager.getConnection(ConexionUrl);

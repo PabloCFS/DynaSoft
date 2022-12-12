@@ -5,13 +5,16 @@
  */
 package com.cfscr.dynasoft.services;
 
-import com.cfscr.dynasoft.connection.DAOdocElectronico;
 import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
-import com.cfscr.dynasoft.excel.EscrituraExcelComparativa;
+
 import com.cfscr.dynasoft.logic.Agrupacion;
 import com.cfscr.dynasoft.logic.Comparativa;
+import com.cfscr.dynasoft.connection.DAOdocElectronico;
+import com.cfscr.dynasoft.excel.EscrituraExcelComparativa;
+
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +49,8 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
         excel.cargarRegistrosComparativa(comparativa.comparaListas(documentosCRM, documentos));
         excel.cargarDocsAgrupados(agrupacion.agruparDocumentos(comparativa.comparaListas(documentosCRM, documentos)));
         excel.crearExcel();
+        
+        
     }
     
     @Override

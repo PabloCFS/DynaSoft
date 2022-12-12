@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class DocumentoComparativa {
     
-    private String oportunidad, tipo, cliente, factura;
+    private String oportunidad, tipo, cliente, factura, tema;
     private float monto, ingresoProfit, ingresoEstimado, totalVentaNeta, totalFactura, diferencia;
     private Date fechaEstimada, fecha;
    
@@ -22,6 +22,7 @@ public class DocumentoComparativa {
         this.tipo = "";
         this.cliente = "";
         this.factura = "";
+        this.tema = "";
         this.monto = 0.f;
         this.ingresoProfit = 0.f;
         this.ingresoEstimado = 0.f;
@@ -32,11 +33,12 @@ public class DocumentoComparativa {
         this.fecha = null;
     }
     
-    public DocumentoComparativa(String pOportunidad, String pTipo, String pCliente, String pFactura, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVentaNeta, float pTotalFactura, float pDiferencia,  Date pFechaEstimada, Date pFecha){
+    public DocumentoComparativa(String pOportunidad, String pTipo, String pCliente, String pFactura, String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVentaNeta, float pTotalFactura, float pDiferencia,  Date pFechaEstimada, Date pFecha){
         this.oportunidad = pOportunidad;
         this.tipo = pTipo;
         this.cliente = pCliente;
         this.factura = pFactura;
+        this.tema = pTema;
         this.monto = pMonto;
         this.ingresoProfit = pIngresoProfit;
         this.ingresoEstimado = pIngresoEstimado;
@@ -51,6 +53,7 @@ public class DocumentoComparativa {
     public void setTipo(String pTipo) { this.tipo = pTipo; }
     public void setCliente(String pCliente) { this.cliente = pCliente; }
     public void setFactura(String pFactura) { this.factura = pFactura; }
+    public void setTema(String pTema) { this.tema = pTema; }
     public void setMonto(float pMonto) { this.monto = pMonto; }
     public void setIngresoProfit(float pIngresoProfit) { this.ingresoProfit = pIngresoProfit; }
     public void setIngresoEstimado(float pIngresoEstimado) { this.ingresoEstimado = pIngresoEstimado; }
@@ -64,6 +67,7 @@ public class DocumentoComparativa {
     public String getTipo() { return this.tipo; }
     public String getCliente() { return this.cliente; }
     public String getFactura() { return this.factura; }
+    public String getTema() { return this.tema; }
     public float getMonto() { return this.monto; }
     public float getIngresoProfit() { return this.ingresoProfit; }
     public float getIngresoEstimado() { return this.ingresoEstimado; }

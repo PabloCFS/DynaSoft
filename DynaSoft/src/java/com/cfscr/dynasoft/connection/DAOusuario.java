@@ -21,9 +21,9 @@ import java.util.ArrayList;
 /**
  * Capa de consulta de usuarios
  **/
-public class DAOusuario extends Conexion{
+public class DAOusuario extends ConexionERP{
     private ResultSet rs;
-    private final Connection cn = Conexion.getConnection();
+    private final Connection cn = ConexionERP.getConnection();
     
     /** INSERTAR USUARIOS**/
     public void insertarUsuario(Usuario pUsuario){

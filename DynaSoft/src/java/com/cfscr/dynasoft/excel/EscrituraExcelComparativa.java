@@ -37,15 +37,17 @@ public class EscrituraExcelComparativa {
                                 "Aplicación","Documento OC","Monto"};
     private final String columnasCRM[] = {"Oportunidad","Tema","UEN","Cliente Potencial","Ingresos Reales","Est. Profit",
                                 "Fecha de cierre real","Fecha estimada de factura","Propietario"};
-    private final String columnasComparativa[] = {"Oportunidad-CRM","Tipo-ERP","Nombre Cliente-CRM","Número Factura-ERP","Monto-ERP",
+    private final String columnasComparativa[] = {"Oportunidad-CRM","Tipo-ERP","Nombre Cliente-CRM","Tema-CRM","Número Factura-ERP","Monto-ERP",
                                 "Ingreso Profit-CRM","Ingreso Estimado-CRM","Total Venta Neta-ERP","Total Factura-ERP","Diferencia (TotalVenta - Ingreso Estimado)",
                                 "Fecha Estimada Factura-CRM","Fecha-ERP","Comentarios"};
+    private final String columnasAgrupacion[] = {"Oportunidad","Tipo","Cliente","Tema","Monto","Ingreso Profit","Ingreso Estimado","Total Venta","Total Factura","Diferencia","Comentarios"};
+    
     
     private final Workbook book = new XSSFWorkbook();
     private final Sheet sheet = book.createSheet("Facturas ERP");
     private final Sheet sheet2 = book.createSheet("Oportunidades CRM");
     private final Sheet sheet3 = book.createSheet("Comparativa");
-    private final Sheet sheet4 = book.createSheet("Agrupación Documentos");
+    private final Sheet sheet4 = book.createSheet("Agrupación");
  
     private FileOutputStream fileout;
     
@@ -142,19 +144,19 @@ public class EscrituraExcelComparativa {
             row = sheet3.createRow(i+1);
             
             row.createCell(0).setCellValue(documentos.get(i).getOportunidad());
-            
             row.createCell(1).setCellValue(documentos.get(i).getTipo());
             row.createCell(2).setCellValue(documentos.get(i).getCliente());
-            row.createCell(3).setCellValue(documentos.get(i).getFactura());
-            row.createCell(4).setCellValue(documentos.get(i).getMonto());
-            row.createCell(5).setCellValue(documentos.get(i).getIngresoProfit());
-            row.createCell(6).setCellValue(documentos.get(i).getIngresoEstimado());
-            row.createCell(7).setCellValue(documentos.get(i).getTotalVentaNeta());
-            row.createCell(8).setCellValue(documentos.get(i).getTotalFactura());
-            row.createCell(9).setCellValue(documentos.get(i).getDiferencia());
-            row.createCell(10).setCellValue(castearDate(documentos.get(i).getFechaEstimada()));
-            row.createCell(11).setCellValue(castearDate(documentos.get(i).getFecha()));
-            row.createCell(12).setCellValue((
+            row.createCell(3).setCellValue(documentos.get(i).getTema());
+            row.createCell(4).setCellValue(documentos.get(i).getFactura());
+            row.createCell(5).setCellValue(documentos.get(i).getMonto());
+            row.createCell(6).setCellValue(documentos.get(i).getIngresoProfit());
+            row.createCell(7).setCellValue(documentos.get(i).getIngresoEstimado());
+            row.createCell(8).setCellValue(documentos.get(i).getTotalVentaNeta());
+            row.createCell(9).setCellValue(documentos.get(i).getTotalFactura());
+            row.createCell(10).setCellValue(documentos.get(i).getDiferencia());
+            row.createCell(11).setCellValue(castearDate(documentos.get(i).getFechaEstimada()));
+            row.createCell(12).setCellValue(castearDate(documentos.get(i).getFecha()));
+            row.createCell(13).setCellValue((
                     (documentos.get(i).getTipo().equals("Nota Crédito")) || 
                     (documentos.get(i).getTipo().equals("Otro Crédito")) || 
                     (documentos.get(i).getTipo().equals("No Match ERP")) ||
@@ -167,7 +169,29 @@ public class EscrituraExcelComparativa {
     
     //PESTANA DE AGRUPACION DE DOCUMENTOS
     public void cargarDocsAgrupados(ArrayList<DocumentoAgrupacion> documentos){
+        Row row = sheet4.createRow(0);
         
+        for(int i=0; i < columnasAgrupacion.length; i++){
+            row.createCell(i).setCellValue(columnasAgrupacion[i]);
+        }
+        
+        for (int i=0; i < documentos.size(); i++){
+            row = sheet4.createRow(i+1);
+            
+            row.createCell(0).setCellValue(documentos.get(i).getOportunidad());
+            row.createCell(1).setCellValue(documentos.get(i).getTipo());
+            row.createCell(2).setCellValue(documentos.get(i).getNombreCliente());
+            row.createCell(3).setCellValue(documentos.get(i).getTema());
+            row.createCell(4).setCellValue(documentos.get(i).getMonto());
+            row.createCell(5).setCellValue(documentos.get(i).getIngresoProfit());
+            row.createCell(6).setCellValue(documentos.get(i).getIngresoEstimado());
+            row.createCell(7).setCellValue(documentos.get(i).getTotalVenta());
+            row.createCell(8).setCellValue(documentos.get(i).getToralFactura());
+            row.createCell(9).setCellValue(documentos.get(i).getDiferencia());
+            row.createCell(10).setCellValue((documentos.get(i).getDiferencia() >= 0)
+                ? " - - - " 
+                : " Saldo Negativo ");
+        }
     }
     
     //DATE TO STRING

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cfscr.dynasoft.connection;
+package RUNS;
 
 import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
@@ -51,7 +51,8 @@ public class NewMain2 {
         ArrayList<DocumentosERP> nc;
         ServiceDocElectronicoImpl serviceDoc = new ServiceDocElectronicoImpl();
 
-        String pFecha1= "2021-12-31 23:59:59.000";
+        //String pFecha1= "2021-12-31 23:59:59.000";
+        String pFecha1 = "2021-12-31 23:59:59.000";
         String pFecha2= "2023-01-01 00:00:01.000";
 
         nc = serviceDoc.obtenerDocumentos(pFecha1, pFecha2, 'F');
@@ -70,8 +71,5 @@ public class NewMain2 {
         
         serviceDoc.cargarExcel(nc,docsCRM);
         System.out.println("Cargue el excel");
-      
     }
 }
-
-

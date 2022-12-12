@@ -1,0 +1,11 @@
+Auth URL:
+https://login.microsoftonline.com/common/oauth2/authorize?resource=https://cfssistemas1.crm.dynamics.com/
+ 
+Client ID: 
+184ee529-b661-4bd5-b1cc-6db82a174a4f
+
+Callback URL:
+http://localhost
+
+Service Root URL:
+https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/
