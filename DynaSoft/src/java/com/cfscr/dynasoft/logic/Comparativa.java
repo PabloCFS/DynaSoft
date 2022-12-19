@@ -10,34 +10,16 @@ import com.cfscr.dynasoft.entities.DocumentosCRM;
 import com.cfscr.dynasoft.entities.DocumentoComparativa;
 
 import java.util.ArrayList;
-
 /**
- *
  * @author pablo.elizondo
  */
 public class Comparativa {
     
-    //VARIABLES
-    private ArrayList<DocumentoComparativa> documentos = new ArrayList<> ();
-    
-    //CONSTRUCTORES CON Y SIN PARAMETROS
-    public void comparativa(){
-        this.documentos = null;
-    }
-    
-    public void comparativa(ArrayList<DocumentoComparativa> pDocumentos){
-        this.documentos = pDocumentos;
-    }
-    
-    //SET AND GET
-    public void setDocumentos(ArrayList<DocumentoComparativa> pDocumentos) { this.documentos = pDocumentos; }
-    public ArrayList<DocumentoComparativa> getDocumentos() { return this.documentos; }
-    
-    //AGREGAR ELEMENTOS EN LA SECCION DE COMPARATIVA
-    public ArrayList<DocumentoComparativa> comparaListas(ArrayList<DocumentosCRM> docsCRM, ArrayList<DocumentosERP> docsERP){
-       
-        //AGREGAR CRM CON ERP JUNTOS
-        for(int i=0; i < docsCRM.size(); i++){
+    //Retorna el vector para la comparativa CRM - ERP
+    public ArrayList<DocumentoComparativa> comparaListas(ArrayList<DocumentosCRM> docsCRM, ArrayList<DocumentosERP> docsERP, ArrayList<DocumentoComparativa> documentos){
+        
+        //Agregar CRM con ERP juntos
+        for(int i=0; i<docsCRM.size(); i++){
             String oportunidad = docsCRM.get(i).getOportunidad();
             boolean coinciden = false;
             
@@ -46,6 +28,7 @@ public class Comparativa {
                     
                     switch(docsERP.get(j).getTipo()){
                         case "Factura":
+                            
                             DocumentoComparativa miDocumento = new DocumentoComparativa();
                             miDocumento.setOportunidad(docsCRM.get(i).getOportunidad());
                             miDocumento.setTipo(docsERP.get(j).getTipo());
@@ -127,10 +110,10 @@ public class Comparativa {
             }
         }
         
-        //AGREGAR CRM
+        //Agregar solo CRM
         for(int i=0; i < docsCRM.size();){
-            DocumentoComparativa miDocumento = new DocumentoComparativa();
             
+            DocumentoComparativa miDocumento = new DocumentoComparativa();
             miDocumento.setOportunidad(docsCRM.get(i).getOportunidad());
             miDocumento.setTipo("No Match ERP");
             miDocumento.setCliente(docsCRM.get(i).getClientePotencial());
@@ -149,10 +132,10 @@ public class Comparativa {
             docsCRM.remove(i);
         }
         
-        //AGREGAR ERP
+        //Agregar solo ERP
         for(int i=0; i < docsERP.size();){
-            DocumentoComparativa miDocumento = new DocumentoComparativa();
             
+            DocumentoComparativa miDocumento = new DocumentoComparativa();
             miDocumento.setOportunidad("No match CRM");
             miDocumento.setTipo(docsERP.get(i).getTipo());
             miDocumento.setCliente(" - ");

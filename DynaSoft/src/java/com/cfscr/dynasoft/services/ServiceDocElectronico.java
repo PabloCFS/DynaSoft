@@ -7,18 +7,27 @@ package com.cfscr.dynasoft.services;
 
 import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
+import com.cfscr.dynasoft.entities.DocumentoAgrupacion;
+import com.cfscr.dynasoft.entities.DocumentoComparativa;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author pablo.elizondo       
  */
 public interface ServiceDocElectronico {
-    ArrayList<DocumentosERP> obtenerDocumentos(String pFecha1, String pFecha2, char pTipoCosulta);
+    //Obtener ERP
+    ArrayList<DocumentosERP> obtenerERP(ArrayList<DocumentosERP> docsERP, String pFecha1, String pFecha2);
 
-    void cargarExcel(ArrayList<DocumentosERP> documentos, ArrayList<DocumentosCRM> documentosCRM);
+    //Obtener CRM
+    ArrayList<DocumentosCRM> obtenerCRM(ArrayList<DocumentosCRM> docsCRM, String bodyAthorization, String bodyCookie, String fechaInicio, String fechaFin);
     
-    ArrayList<DocumentosERP> extraerOtrosCredtios(ArrayList<DocumentosERP> documentos);
+    //Crear Comparativa
+    ArrayList<DocumentoComparativa> creaComparativa(ArrayList<DocumentosCRM> docsCRM, ArrayList<DocumentosERP> docsERP, ArrayList<DocumentoComparativa> docsComparativa);
     
+    //Crear Agrupacion
+    ArrayList<DocumentoAgrupacion> creaAgrupacion(ArrayList<DocumentoComparativa> docsComparativa, ArrayList<DocumentoAgrupacion> docsAgrupacion);
+    
+    //Crear Excel
+    void cargarExcel();
 }

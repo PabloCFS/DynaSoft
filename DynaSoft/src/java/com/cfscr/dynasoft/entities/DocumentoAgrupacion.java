@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package com.cfscr.dynasoft.entities;
-
 /**
- *
  * @author pablo.elizondo
  */
 public class DocumentoAgrupacion {
+    //Declaracion de variables
     private String oportunidad, tipo, nombreCliente, tema;
     private float monto, ingresoProfit, ingresoEstimado, totalVenta, totalFactura, diferencia;
     
-    //Constructores con y sin parametros
+    //Constructor sin parametros
     public DocumentoAgrupacion(){
         this.oportunidad = "";
         this.tipo = "";
@@ -27,6 +26,7 @@ public class DocumentoAgrupacion {
         this.diferencia = 0.f;
     }
     
+    //Constructor con parametros
     public DocumentoAgrupacion(String pOportunidad, String pTipo, String pNombreCliente, String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVenta, float pTotalFactura, float pDiferencia){
         this.oportunidad = pOportunidad;
         this.tipo = pTipo;
@@ -51,6 +51,7 @@ public class DocumentoAgrupacion {
     public void setTotalFactura(float pTotalFactura) { this.totalFactura = pTotalFactura; }
     public void setDiferencia(float pDiferencia) { this.diferencia = pDiferencia;}
     
+    //FUNCIONES GET
     public String getOportunidad() { return this.oportunidad; }
     public String getTipo() { return this.tipo; }
     public String getNombreCliente() { return this.nombreCliente; }
@@ -59,6 +60,6 @@ public class DocumentoAgrupacion {
     public float getIngresoProfit() { return this.ingresoProfit; }
     public float getIngresoEstimado() { return this.ingresoEstimado; }
     public float getTotalVenta() { return this.totalVenta; }
-    public float getToralFactura() { return this.totalFactura; }
+    public float getTotalFactura() { return this.totalFactura; }
     public float getDiferencia() { return this.diferencia; }
 }

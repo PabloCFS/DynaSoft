@@ -8,10 +8,6 @@ package com.cfscr.dynasoft.entities;
 /**
  * @author pablo.elizondo
  */
-
-/**
- * Creacion de clase usuario
- **/
 public class Usuario {
     
     private String nombre;
@@ -32,5 +28,4 @@ public class Usuario {
     
     public String getNombre() { return this.nombre; }
     public String getClave() { return this.clave; }
-
 }

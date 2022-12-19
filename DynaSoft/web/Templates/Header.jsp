@@ -7,10 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="Styles/cssHeader.css">
 
-<section id="Section-Header">
-    <container class="container-header">
-        
+<section class="Section-Header">
+    <container class="Container-header">
         <div class="columns w-row columns-header">
+            
             <div class="column w-col w-col-6 column1-header">
                 <img class="logoCFS" src="Sources/Images/logo_cfs-color.png"></img>
             </div>
@@ -22,28 +22,7 @@
                     </button>
                 </form>
             </div>
-        </div>
         
+        </div>
     </container>
 </section>
-
-<!--
-<header class="fixed-top">
-    <nav class="navbar navbar-expand navbar-light">
-        <div>
-            <img id="logoCFS-Header" class="img-fluid" src="Sources/Images/logo_cfs-color.png">
-        </div>
-        
-        <div class="row col-7">
-            
-        </div>
-        
-        <div>
-            <form action="Login" method="post">
-                <input type="submit" name="salir" value="Salir" class="btn-lg text-white"/>
-            </form>
-        </div>
-    </nav>
-</header>
-
--->

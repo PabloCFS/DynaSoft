@@ -6,17 +6,17 @@
 package com.cfscr.dynasoft.entities;
 
 import java.util.Date;
-
 /**
  *
  * @author pablo.elizondo
  */
 public class DocumentoComparativa {
-    
+    //Declaracion de variables
     private String oportunidad, tipo, cliente, factura, tema;
     private float monto, ingresoProfit, ingresoEstimado, totalVentaNeta, totalFactura, diferencia;
     private Date fechaEstimada, fecha;
    
+    //Constructor sin parametros
     public DocumentoComparativa(){
         this.oportunidad = "";
         this.tipo = "";
@@ -33,6 +33,7 @@ public class DocumentoComparativa {
         this.fecha = null;
     }
     
+    //Constructor con parametros
     public DocumentoComparativa(String pOportunidad, String pTipo, String pCliente, String pFactura, String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVentaNeta, float pTotalFactura, float pDiferencia,  Date pFechaEstimada, Date pFecha){
         this.oportunidad = pOportunidad;
         this.tipo = pTipo;
@@ -49,6 +50,7 @@ public class DocumentoComparativa {
         this.fecha = pFecha;
     }
     
+    //FUNCIONES SET
     public void setOportunidad(String pOportunidad) {this.oportunidad = pOportunidad; }
     public void setTipo(String pTipo) { this.tipo = pTipo; }
     public void setCliente(String pCliente) { this.cliente = pCliente; }
@@ -63,6 +65,7 @@ public class DocumentoComparativa {
     public void setFechaEstimada(Date pFechaEstimada) { this.fechaEstimada = pFechaEstimada; }
     public void setFecha(Date pFecha) { this.fecha = pFecha; }
     
+    //FUNCIONES GET
     public String getOportunidad() { return this.oportunidad; }
     public String getTipo() { return this.tipo; }
     public String getCliente() { return this.cliente; }

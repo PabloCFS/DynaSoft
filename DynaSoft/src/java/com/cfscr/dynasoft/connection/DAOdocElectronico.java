@@ -13,81 +13,77 @@ import java.sql.SQLException;
 import java.sql.CallableStatement;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
- *
  * @author pablo.elizondo
+ * 
+ * Consulta la informacion del ERPP | Retorna un vector de DocumentosERP
  */
 public class DAOdocElectronico extends ConexionERP{
     private ResultSet rs;
     private final Connection cn = ConexionERP.getConnection();
     
-    //TRAER DOCUMENTOS ELECTRONICOS DE LA BD
-    public ArrayList<DocumentosERP> ListarDocsElectronicos(String pFecha1, String pFecha2, char tipoConsulta) throws SQLException {
+    //Extrae informacion de la DB | Retorna el vector de DocumentosERP
+    public ArrayList<DocumentosERP> ListarDocsElectronicos(ArrayList<DocumentosERP> docs, String pFecha1, String pFecha2) {
        
-        ArrayList<DocumentosERP> docsElectronicos = new ArrayList<>();
-        CallableStatement csta;
-        csta = cn.prepareCall("SP_LISTAR_FACTURAS_DYNASOFT ?,?");
-        
-        //Facturas
-        tipoConsulta = 'F';
-        if(tipoConsulta == 'F'){
+        try {
+            CallableStatement csta = cn.prepareCall("SP_LISTAR_FACTURAS_DYNASOFT ?,?");
+            
+            //Facturas
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
             rs = csta.executeQuery();
-                
             while(rs.next()){
-                docsElectronicos.add(evaluaConsultas(rs,tipoConsulta));
+                docs.add(evaluaConsultas(rs,'F'));
             }
-        }
-        //Notas de Credito
-        tipoConsulta = 'N';
-        if(tipoConsulta == 'N'){
+            
+            //Notas de Credito
             csta = cn.prepareCall("SP_LISTAR_NOTAS_CREDITO_DYNASOFT ?,?");
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
             rs = csta.executeQuery();
-            
             while(rs.next()){
-                DocumentosERP docElectronico = evaluaConsultas(rs, tipoConsulta);
-                
-                if(docElectronico.getTipoAsiento() != null){
-                    docsElectronicos.add(docElectronico);
+                if(evaluaConsultas(rs, 'N').getTipoAsiento() != null){
+                    docs.add(evaluaConsultas(rs, 'N'));
                 }
             }
-        }
-        //Otros Creditos
-        tipoConsulta = 'O';
-        if(tipoConsulta == 'O'){
+            
+            //Otros Creditos
             csta = cn.prepareCall("SP_LISTAR_OTROS_CREDITOS_DYNASOFT ?,?");
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
             rs = csta.executeQuery();
-            
             while(rs.next()){
-                DocumentosERP docElectronico = evaluaConsultas(rs, tipoConsulta);
-                if(docElectronico.getTipoAsiento() != null) {
-                    docsElectronicos.add(docElectronico);
+                if(evaluaConsultas(rs, 'O').getTipoAsiento() != null) {
+                    docs.add(evaluaConsultas(rs, 'O'));
                 }
             }
+
+            //Quitar OtrosCreditos
+            for(int i=0; i<docs.size(); i++){
+                if((docs.get(i).getTipo().equals("Otro Crédito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
+                    docs.remove(i);
+                    i = i - 2;
+                }
+                if(i < 0) i = 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOdocElectronico.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Quitar OtrosCreditos
-        for(int i=0; i<docsElectronicos.size(); i++){
-            if((docsElectronicos.get(i).getTipo().equals("Otro Crédito")) && (eliminarOC(docsElectronicos.get(i).getAplicacion())) == true){
-                docsElectronicos.remove(i);
-                i = i - 2;
-            }
-            if(i < 0) i = 0;
-        }
-        return docsElectronicos;
+        return docs;
     }
     
-    //Evaluar la consulta Factura, Notas de Credito y Notas de Credito
+    //Evaluar la consulta Factura, Notas de Credito y Otros Creditos
     private DocumentosERP evaluaConsultas(ResultSet rs, char tipoConsulta) throws SQLException{
         DocumentosERP documento = new DocumentosERP();
         
         documento.setTipoCambio((rs.getString("TIPO_CAMBIO") == null) ? 0.f : rs.getFloat("TIPO_CAMBIO"));
+        
         switch(tipoConsulta){
+            
+            //Cargar las Facturas
             case 'F':
                 documento.setNombre((rs.getString("NOMBRE_CLIENTE") == null) ? null : rs.getString("NOMBRE_CLIENTE"));
                 documento.setTipo((rs.getString("CONSECUTIVO") == null) ? null : tipoDocumento(rs.getString("CONSECUTIVO")));
@@ -136,10 +132,10 @@ public class DAOdocElectronico extends ConexionERP{
         }
         documento.setCliente((rs.getString("CLIENTE") == null) ? null : rs.getString("CLIENTE"));
         documento.setNitReceptor((rs.getString("NIT_RECEPTOR") == null) ? null : rs.getString("NIT_RECEPTOR"));
-        documento.setContieneErrores((rs.getString("CONTIENE_ERRORES") == null) ? 'X' : rs.getString("CONTIENE_ERRORES").charAt(0));
-        documento.setErrorWS((rs.getString("ERROR_WS") == null) ? 'X' : rs.getString("ERROR_WS").charAt(0));
-        documento.setErrorSoftland((rs.getString("ERROR_SOFTLAND") == null) ? 'X' : rs.getString("ERROR_SOFTLAND").charAt(0));
-        documento.setEnviado((rs.getString("ENVIADO") == null) ? 'X' : rs.getString("ENVIADO").charAt(0));
+        documento.setContieneErrores((rs.getString("CONTIENE_ERRORES") == null) ? '-' : rs.getString("CONTIENE_ERRORES").charAt(0));
+        documento.setErrorWS((rs.getString("ERROR_WS") == null) ? '-' : rs.getString("ERROR_WS").charAt(0));
+        documento.setErrorSoftland((rs.getString("ERROR_SOFTLAND") == null) ? '-' : rs.getString("ERROR_SOFTLAND").charAt(0));
+        documento.setEnviado((rs.getString("ENVIADO") == null) ? '-' : rs.getString("ENVIADO").charAt(0));
         
         documento.setTotalGravado((rs.getString("TOTALGRAVADO") == null) ? 0.f :
             evaluaNumero(
@@ -186,7 +182,6 @@ public class DAOdocElectronico extends ConexionERP{
         documento.setTotalFactura((rs.getString("TOTAL_FACTURA") == null) ? 0.f : 
             CRCtoUSD(rs.getFloat("TOTAL_FACTURA"), documento.getTipoCambio(), documento.getMoneda())
         );
-        
         documento.setMoneda(tipoMoneda(documento.getMoneda()));
         
         return documento;

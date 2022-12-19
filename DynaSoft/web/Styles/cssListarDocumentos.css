@@ -84,7 +84,7 @@ and open the template in the editor.
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     
-    width: 75%;
+    width: 90%;
     min-width: 1px;
     max-width: none;
     
@@ -101,10 +101,10 @@ and open the template in the editor.
     align-items: center;
     justify-content: center;
     
-    margin: 0px 0px 0px 0px;
+    margin: 0 auto;
     padding: 0px 0px 0px 0px;
     
-    width: 100%;
+    width: 90%;
     min-width: 1px;
     max-width: none;
     
@@ -114,12 +114,8 @@ and open the template in the editor.
 }
 
 .columns-2{
-    display: flex;
+    display: block;
     position: static;
-    
-    align-items: center;
-    align-content: center;
-    justify-content: center;
     
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
@@ -133,28 +129,26 @@ and open the template in the editor.
     max-height: none;
 }
 
+#div-boton-buscar{
+    width: 55%;
+}
+
 .columnsListarDocs{
-    display: flex;
+    display: block;
     position: static;
     
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    
-    margin: 0px 0px 0px 0px;
+    margin: 0 auto;
     padding: 0px 0px 0px 0px;
     
-    width: 33.3333%;
+    width: 50%;
     min-width: 1px;
     max-width: none;
     
     height: auto;
     min-height: 1px;
     max-height: none;
+    
+    /*border: 2px red solid;*/
 }
 
 .label-listarDocs{
@@ -184,13 +178,10 @@ and open the template in the editor.
     display: block;
     position: static;
     
-    align-content: center;
-    align-items: center;
-    
-    margin: 1% 0px 0px 0px;
+    margin: 0 auto;
     padding: 1% 1% 1% 1%;
     
-    width: auto;
+    width: 60%;
     min-width: 1px;
     max-width: none;
     
@@ -209,6 +200,31 @@ and open the template in the editor.
     border-radius: 10px;
 }
 
+.text-listarDocs{
+   display: block;
+   position: static;
+   
+   margin: 0 auto;
+   padding: 1% 1% 1% 1%;
+   
+   width: 100%;
+   min-width: 1px;
+   max-width: none;
+   
+   height: auto;
+   min-height: 1px;
+   max-height: none;
+    
+   font-family: cursive;
+   font-weight: 400;
+   font-size: 100%;
+   line-height: 120%;
+   color: #000000;
+   
+   background-color: gray;
+   border-radius: 10px;
+}
+
 .button-submit-listarDocs{
     display: flex;
     position: relative;
@@ -217,10 +233,10 @@ and open the template in the editor.
     align-content: center;
     justify-content: center;
     
-    margin: 0px 0px 0px 0px;
-    padding: 2% 0px 2% 0px;
+    margin: 0 auto;
+    padding: 5% 0px 5% 0px;
     
-    width: 35%;
+    width: 100%;
     min-width: 1px;
     max-width: none;
     
@@ -255,7 +271,78 @@ and open the template in the editor.
     max-height: none;
 }
 
-/*SECCION DONDE SE MUESTRA LA TABLA CON LA INFORMACION*/
+.container-listarDocs2{
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+}
+
+.carousel{
+    margin: 1% 0.5% 0% 0.5%;  
+    padding: 0px 0px 0px 0px;
+    
+    width: 99%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+/*Seccion donde se muestra la tabla con la informacion del ERP*/
+.table{
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.table-fixed tbody{
+    overflow-y: auto;
+    width: 100%;
+}
+
+.tr-thead-docs{
+    font-family: cursive;
+    font-weight: 100;
+    font-size: 75%;
+    line-height: 100%;
+    color: black;
+}
+
+.tr-tbody-docsERP{
+    font-family: cursive;
+    font-weight: 100;
+    font-size: 60%;
+    line-height: 100%;
+    color: black;
+    
+    background-color: RGB(255, 255, 255, 0.8)
+}
+
+#ocultar{
+    position: absolute;
+    
+    width: 1px;
+    min-width: 1px;
+    max-width: none;
+    
+    height: 1px;
+    min-height: 1px;
+    max-height: none;
+    
+    visibility: hidden;
+}
+
 
 
 

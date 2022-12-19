@@ -15,69 +15,52 @@ import java.util.ArrayList;
  * @author pablo.elizondo
  */
 public class Agrupacion {
-    
-    private ArrayList<DocumentoAgrupacion> documentos = new ArrayList<> ();
-    
-    //Constructores con y sin parametros
-    public void Agrupacion(){
-        this.documentos = null;
-    }
-    
-    public void Agrupacion(ArrayList<DocumentoAgrupacion> pDocumentos){
-        this.documentos = pDocumentos;
-    }
-    
-    //SET AND GET
-    public void setDocumentos(ArrayList<DocumentoAgrupacion> pDocumentos) { this.documentos = pDocumentos; }
-    
-    public ArrayList<DocumentoAgrupacion> getDocumentos() { return this.documentos; }
-    
     //Funciona para agrupar documentos
-    public ArrayList<DocumentoAgrupacion> agruparDocumentos(ArrayList<DocumentoComparativa> pDocumentos){
+    public ArrayList<DocumentoAgrupacion> agruparDocumentos(ArrayList<DocumentoComparativa> docComparativa, ArrayList<DocumentoAgrupacion> docsAgrupacion){
         
-        for(int i=0; i<pDocumentos.size(); i++){
+        for(int i=0; i<docComparativa.size(); i++){
             DocumentoAgrupacion documento = new DocumentoAgrupacion();
             
-            if((pDocumentos.get(i).getTipo().equals("Otro Crédito")) || 
-               (pDocumentos.get(i).getOportunidad().equals("No match CRM"))) {
+            if((docComparativa.get(i).getTipo().equals("Otro Crédito")) || 
+               (docComparativa.get(i).getOportunidad().equals("No match CRM"))) {
                 
-                documento.setOportunidad(pDocumentos.get(i).getOportunidad());
-                documento.setTipo(pDocumentos.get(i).getTipo());
-                documento.setNombreCliente(pDocumentos.get(i).getCliente());
-                documento.setTema(pDocumentos.get(i).getTema());
-                documento.setMonto(pDocumentos.get(i).getMonto());
-                documento.setIngresoProfit(pDocumentos.get(i).getIngresoProfit());
-                documento.setIngresoEstimado(pDocumentos.get(i).getIngresoEstimado());
-                documento.setTotalVenta(pDocumentos.get(i).getTotalVentaNeta());
-                documento.setTotalFactura(pDocumentos.get(i).getTotalFactura());
+                documento.setOportunidad(docComparativa.get(i).getOportunidad());
+                documento.setTipo(docComparativa.get(i).getTipo());
+                documento.setNombreCliente(docComparativa.get(i).getCliente());
+                documento.setTema(docComparativa.get(i).getTema());
+                documento.setMonto(docComparativa.get(i).getMonto());
+                documento.setIngresoProfit(docComparativa.get(i).getIngresoProfit());
+                documento.setIngresoEstimado(docComparativa.get(i).getIngresoEstimado());
+                documento.setTotalVenta(docComparativa.get(i).getTotalVentaNeta());
+                documento.setTotalFactura(docComparativa.get(i).getTotalFactura());
                 documento.setDiferencia(documento.getTotalVenta() - documento.getIngresoEstimado());
                 
             }
-            else if((!pDocumentos.get(i).getTipo().equals("Otro Crédito")) && 
-                    (!pDocumentos.get(i).getOportunidad().equals("No match CRM"))) {
+            else if((!docComparativa.get(i).getTipo().equals("Otro Crédito")) && 
+                    (!docComparativa.get(i).getOportunidad().equals("No match CRM"))) {
                 
-                documento.setOportunidad(pDocumentos.get(i).getOportunidad());
-                documento.setTipo((pDocumentos.get(i).getTipo().equals("No Match ERP")) ? "No Match ERP" : " - - - ");
-                documento.setNombreCliente(pDocumentos.get(i).getCliente());
-                documento.setTema(pDocumentos.get(i).getTema());
+                documento.setOportunidad(docComparativa.get(i).getOportunidad());
+                documento.setTipo((docComparativa.get(i).getTipo().equals("No Match ERP")) ? "No Match ERP" : " - - - ");
+                documento.setNombreCliente(docComparativa.get(i).getCliente());
+                documento.setTema(docComparativa.get(i).getTema());
                 documento.setMonto(0.f);
-                documento.setIngresoProfit(pDocumentos.get(i).getIngresoProfit());
-                documento.setIngresoEstimado(pDocumentos.get(i).getIngresoEstimado());
-                documento.setTotalVenta(pDocumentos.get(i).getTotalVentaNeta());
+                documento.setIngresoProfit(docComparativa.get(i).getIngresoProfit());
+                documento.setIngresoEstimado(docComparativa.get(i).getIngresoEstimado());
+                documento.setTotalVenta(docComparativa.get(i).getTotalVentaNeta());
                 
-                while((pDocumentos.get(i+1).getOportunidad().equals(pDocumentos.get(i).getOportunidad())) && 
-                      (!pDocumentos.get(i+1).getTipo().equals("Otro Crédito"))) {
+                while((docComparativa.get(i+1).getOportunidad().equals(docComparativa.get(i).getOportunidad())) && 
+                      (!docComparativa.get(i+1).getTipo().equals("Otro Crédito"))) {
                     
-                    documento.setTotalVenta(documento.getTotalVenta() + pDocumentos.get(i+1).getTotalVentaNeta());
-                    pDocumentos.remove(i+1);
+                    documento.setTotalVenta(documento.getTotalVenta() + docComparativa.get(i+1).getTotalVentaNeta());
+                    docComparativa.remove(i+1);
                 }
                 
-                documento.setTotalFactura(pDocumentos.get(i).getTotalFactura());
+                documento.setTotalFactura(docComparativa.get(i).getTotalFactura());
                 documento.setDiferencia(documento.getTotalVenta() - documento.getIngresoEstimado());
             }
-            documentos.add(documento);
+            docsAgrupacion.add(documento);
         }
         
-        return documentos;
+        return docsAgrupacion;
     }
 }

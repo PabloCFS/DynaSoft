@@ -1,0 +1,25 @@
+Aplicacion -> -
+DocumentoOC -> -
+Monto -> 0.0
+Cliente -> CLI0082
+Nombre -> VIDRIERA CENTROAMERICANA SOCIEDAD ANONIMA
+Tipo -> Nota Crédito
+Documento -> 00100001030000000311
+createDate -> 2022-06-07
+TipoAsiento -> Facturación
+nitReceptor -> 3101021291
+ContieneErrores -> -
+errorWS -> N
+errorSoftland -> N
+enviado -> S
+moneda -> USD
+totalGravado -> -21106.13
+totalExento -> 0.0
+totalVenta -> -21106.13
+totalDescuentos -> 0.0
+totalVentaNeta -> -21106.13
+totalImpuesto -> -2743.79
+totalComprobante -> -23849.92
+totalFactura -> 23849.92
+crm -> 2728
+tipoCambio -> 688.09

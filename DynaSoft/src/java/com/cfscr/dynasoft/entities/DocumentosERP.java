@@ -6,16 +6,13 @@
 package com.cfscr.dynasoft.entities;
 
 import java.sql.Date;
-
 /**
- *
  * @author pablo.elizondo
  */
 public class DocumentosERP {
-    
+    //Declaracion de variables
     private String aplicacion, documentoOC;
     private float monto;
-    
     private String cliente, nombre, tipo, documento;
     private Date createDate;
     private String tipoAsiento, nitReceptor;
@@ -25,11 +22,11 @@ public class DocumentosERP {
     private String crm;
     private float tipoCambio;
             
+    //Constructor sin parametros
     public DocumentosERP() {
         this.aplicacion = "";
         this.documentoOC = "";
         this.monto = 0.f;
-        
         this.cliente = "";
         this.nombre = "";
         this.tipo = "";
@@ -53,7 +50,8 @@ public class DocumentosERP {
         this.crm = "";
         this.tipoCambio = 0.f;
     }
-
+    
+    //Constructor con parametros
     public DocumentosERP(String pAplicacion, String pDocumentoOC, float pMonto, String pCliente, String pNombre, String pTipo, String pDocumento, Date pCreateDate, String pTipoAsiento, String pNitReceptor,
                        char pContieneErrores, char pErrorWS, char pErrorSoftland, char pEnviado, String pMoneda, float pTotalGravado,
                        float pTotalExento, float pTotalVenta, float pTotalDescuentos, float pTotalVentaNeta, float pTotalImpuesto,
@@ -61,7 +59,6 @@ public class DocumentosERP {
         this.aplicacion = pAplicacion;
         this.documentoOC = pDocumentoOC;
         this.monto = pMonto;
-        
         this.cliente = pCliente;
         this.nombre = pNombre;
         this.tipo = pTipo;
@@ -86,6 +83,7 @@ public class DocumentosERP {
         this.tipoCambio = pTipoCambio;
     }
 
+    //FUNCIONES SET
     public void setAplicacion(String pAplicacion) { this.aplicacion = pAplicacion; }
     public void setDocumentoOC(String pDocumentoOC) { this.documentoOC = pDocumentoOC; }
     public void setMonto(float pMonto) { this.monto = pMonto; }
@@ -112,6 +110,7 @@ public class DocumentosERP {
     public void setCrm(String pCrm) { this.crm = pCrm; }
     public void setTipoCambio(float pTipoCambio) { this.tipoCambio = pTipoCambio; }
      
+    //FUNCIONES GET
     public String getAplicacion() { return this.aplicacion; }
     public String getDocumentoOC() { return this.documentoOC; }
     public float getMonto() { return this.monto; }

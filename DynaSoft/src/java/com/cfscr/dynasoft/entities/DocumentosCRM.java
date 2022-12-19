@@ -6,13 +6,10 @@
 package com.cfscr.dynasoft.entities;
 
 import java.util.Date;
-
 /**
- *
  * @author pablo.elizondo
  */
 public class DocumentosCRM {
-    
     //Declaracion de variables
     private String oportunidad, tema, UEN, clientePotencial;
     private float ingresosReales, estProfit;
@@ -32,6 +29,7 @@ public class DocumentosCRM {
         this.propietario = "";
     }
     
+    //Constructo con parametros
     public DocumentosCRM(String pOportunidad, String pTema, String pUEN, String pClientePotencial, float pIngresosReales, float pEstProfit, Date pFechaCierre, Date pFechaEstimada, String pPropietario){
         this.oportunidad = pOportunidad;
         this.tema = pTema;
@@ -44,6 +42,7 @@ public class DocumentosCRM {
         this.propietario = pPropietario;
     }
     
+    //FUNCIONES SET
     public void setOportunidad(String pOportunidad) { this.oportunidad = pOportunidad; }
     public void setTema(String pTema) { this.tema = pTema; }
     public void setUEN(String pUEN) { this.UEN = pUEN; }
@@ -54,6 +53,7 @@ public class DocumentosCRM {
     public void setFechaEstimada(Date pFechaEstimada) { this.fechaEstimada = pFechaEstimada; }
     public void setPropietario(String pPropietario) { this.propietario = pPropietario; }
     
+    //FUNCIONES GET
     public String getOportunidad() { return this.oportunidad; }
     public String getTema() { return this.tema; }
     public String getUEN() { return this.UEN; }

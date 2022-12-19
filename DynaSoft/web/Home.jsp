@@ -29,7 +29,7 @@
                     <h1 class="h1-inicio">Inicio de Sesi&oacute;n</h1>
                     
                     <div class="divs-login">
-                        <form class="formulario" action="ServletLogin" method="post" name="myForm">
+                        <form class="formulario" action="Login" method="post" name="myForm">
                             
                             <label class="label">Usuario</label>
                             <input type="text" class="form-control" required="true" oninvalid="this.setCustomValidity('Ingrese un usuario v&aacute;lido')"

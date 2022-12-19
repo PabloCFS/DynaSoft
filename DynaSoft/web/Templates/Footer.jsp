@@ -6,8 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<footer class="footer fixed-bottom" th:fragment="footer">
-    <div class="col-12 footer-copyriht text-center text-white py-3" id="id-Footer">
-        <h3 class="text-white font-weight-bold">admin@cfscr.com</h3>
-    </div>
-</footer>
+<section class="section-listarDocs">
+    <footer class="footer fixed-bottom" th:fragment="footer">
+        <div class="col-12 footer-copyriht text-center text-white py-3" id="id-Footer">
+            <h3 class="text-white font-weight-bold">admin@cfscr.com</h3>
+        </div>
+    </footer>
+</section>
