@@ -34,7 +34,7 @@ public class DocumentoComparativa {
     }
     
     //Constructor con parametros
-    public DocumentoComparativa(String pOportunidad, String pTipo, String pCliente, String pFactura, String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVentaNeta, float pTotalFactura, float pDiferencia,  Date pFechaEstimada, Date pFecha){
+    public DocumentoComparativa(String pOportunidad, String pTipo, String pCliente, String pFactura, String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado, float pTotalVentaNeta, float pTotalFactura, float pDiferencia, Date pFechaEstimada, Date pFecha){
         this.oportunidad = pOportunidad;
         this.tipo = pTipo;
         this.cliente = pCliente;

@@ -30,7 +30,7 @@ public class WebServiceCRM {
     
     //Retorna el vector de oportunidades
     public ArrayList<DocumentosCRM> realizaConsulta(ArrayList<DocumentosCRM> docsCRM, String bodyAuthorization, String bodyCookie, String fechaInicio, String fechaFin) {
-        
+                                                                                System.out.println("\t\tWebServiceCRM Linea -> 33");
         String webApi = "https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/";
         String consultas[] = {webApi + "opportunities",
                               webApi + "opportunities?$skiptoken=%3Ccookie%20pagenumber=%222%22%20pagingcookie=%22%253ccookie%2520page%253d%25221%2522%253e%253copportunityid%2520last%253d%2522%257bC42E05FB-4DA9-E711-813F-E0071B6A4261%257d%2522%2520first%253d%2522%257bDD37B14B-EE17-ED11-B83E-000D3A102BC2%257d%2522%2520%252f%253e%253c%252fcookie%253e%22%20istracking=%22False%22%20/%3E",
@@ -45,7 +45,6 @@ public class WebServiceCRM {
         try{
             //Consulta al API Web
             for(int i = 0; i<consultas.length; i++){
-                
                 Unirest.setTimeouts(0, 0);
                 HttpResponse response = Unirest.get(consultas[i]).header("Authorization", bodyAuthorization).header("Cookie", bodyCookie).asString();
                 JSONObject objJson = new JSONObject(response.getBody().toString());
@@ -69,11 +68,13 @@ public class WebServiceCRM {
                         break;
                 }
             }
+            
             //Generar vector de oportunidades
             for(int i=0; i<docsCRM.size(); i++){
+                
                 for(int j=0; j<uens.size(); j++){
                     if(docsCRM.get(i).getUEN().equals(uens.get(j).getIdUEN())){
-                        docsCRM.get(i).setUEN(uens.get(j).getNombreUEN()); 
+                        docsCRM.get(i).setUEN(uens.get(j).getNombreUEN());
                     }
                 }
                 for(int j=0; j<clientes.size(); j++){
@@ -90,6 +91,7 @@ public class WebServiceCRM {
         } catch (UnirestException ex){
             Logger.getLogger(WebServiceCRM.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("\t\tWebServiceCRM Linea -> 95");
         return docsCRM;
     }
     
@@ -100,10 +102,11 @@ public class WebServiceCRM {
             JSONObject objetoJson = jsonArray.getJSONObject(i);
            
             //Evalua el rango de fechas que debe cargar
-            if((!objetoJson.get("new_estimatedbillingdate").equals(null)) && 
-                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio)) &&
-                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal)) &&
-                (objetoJson.get("statecode").equals(1))
+            if((!objetoJson.get("new_estimatedbillingdate").equals(null)) &&
+               (!objetoJson.get("_ap_uen_value").equals(null)) &&
+               (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio)) &&
+               (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal)) &&
+               (objetoJson.get("statecode").equals(1))
             ){
                 DocumentosCRM docCRM = new DocumentosCRM();
                 

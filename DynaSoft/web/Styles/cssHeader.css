@@ -187,13 +187,3 @@ and open the template in the editor.
     min-height: 1px;
     max-height: none;
 }
-
-.footer{
-    display: block;
-    position: static;
-    
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-
-    background-color: RGB(110, 110, 110, 0.7);
-}

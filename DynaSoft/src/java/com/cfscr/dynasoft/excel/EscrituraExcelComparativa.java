@@ -9,6 +9,7 @@ import com.cfscr.dynasoft.entities.DocumentosCRM;
 import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.entities.DocumentoAgrupacion;
 import com.cfscr.dynasoft.entities.DocumentoComparativa;
+import com.cfscr.dynasoft.webService.WebServiceCRM;
 
 import java.text.SimpleDateFormat;
 

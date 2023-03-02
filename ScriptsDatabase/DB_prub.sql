@@ -18,6 +18,8 @@ INSERT INTO USUARIOS(nombre,clave) VALUES('Pedro','457');
 
 SELECT * FROM USUARIOS;
 
+
+
 ------------------------Procedimientos alamacenados
 USE DB_INT_SOFTLAND;
 ------------------------INSERTAR USUARIOS
@@ -31,6 +33,9 @@ BEGIN
 END
 
 EXEC SP_INSERTAR_USUARIO Maria, 998
+
+
+
 
 ------------------------ELIMINAR USUARIOS
 CREATE PROCEDURE SP_ELIMINAR_USUARIO
@@ -51,6 +56,7 @@ SELECT * FROM USUARIOS;
 END
 
 EXEC LISTAR_USUARIOS
+
 
 ------------------------TRAER UN USUARIO
 CREATE PROCEDURE SP_CONSULTAR_UN_USUARIO

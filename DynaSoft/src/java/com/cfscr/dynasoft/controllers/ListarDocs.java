@@ -52,7 +52,7 @@ public class ListarDocs extends HttpServlet {
         
         response.setContentType("text/html;charset=utf-8");
        
-        String fecha1 = (request.getParameter("fecha1")); 
+        String fecha1 = (request.getParameter("fecha1"));
         String fecha2 = (request.getParameter("fecha2"));
         String authorization = (request.getParameter("textAuthorization"));
         String cookie = (request.getParameter("textCookie"));
@@ -86,8 +86,6 @@ public class ListarDocs extends HttpServlet {
         session.setAttribute("docsComparativa", docsComparativa);
         request.setAttribute("docsAgrupacion", docsAgrupacion);
         session.setAttribute("docsAgrupacion", docsAgrupacion);
-        
-        
         
         request.getRequestDispatcher("ListarDocsElectronicos.jsp").forward(request, response);
     }

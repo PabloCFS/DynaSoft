@@ -33,16 +33,16 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     }
     
     @Override
-    public ArrayList<DocumentosERP> obtenerERP(ArrayList<DocumentosERP> docsERP, String pFecha1, String pFecha2) {  System.out.println("ServiceDocImpl 36 - CARGAR ERP");
-        docsERP = daoDocElectronico.ListarDocsElectronicos(docsERP, pFecha1, pFecha2);                              System.out.println("ServiceDocImpl 37 - Consultando datos");
-        escrituraExcel.cargarRegistrosERP(docsERP);                                                                 System.out.println("ServiceDocImpl 38 - Cargando excel ERP");
+    public ArrayList<DocumentosERP> obtenerERP(ArrayList<DocumentosERP> docsERP, String pFecha1, String pFecha2) {
+        docsERP = daoDocElectronico.ListarDocsElectronicos(docsERP, pFecha1, pFecha2);
+        escrituraExcel.cargarRegistrosERP(docsERP);
         return docsERP;
     }
 
     @Override
-    public ArrayList<DocumentosCRM> obtenerCRM(ArrayList<DocumentosCRM> docsCRM, String bodyAthorization, String bodyCookie, String fechaInicio, String fechaFin) { System.out.println("ServiceDocImpl 43 - CARGAR CRM");
-        docsCRM = webService.realizaConsulta(docsCRM, bodyAthorization, bodyCookie, fechaInicio, fechaFin);         System.out.println("ServiceDocImpl 44 - Consultando datos");
-        escrituraExcel.cargarRegistrosCRM(docsCRM);                                                                 System.out.println("ServiceDocImpl 45 - Cargando excel CRM");
+    public ArrayList<DocumentosCRM> obtenerCRM(ArrayList<DocumentosCRM> docsCRM, String bodyAthorization, String bodyCookie, String fechaInicio, String fechaFin) {
+        docsCRM = webService.realizaConsulta(docsCRM, bodyAthorization, bodyCookie, fechaInicio, fechaFin);
+        escrituraExcel.cargarRegistrosCRM(docsCRM);
         return docsCRM;
     }
 

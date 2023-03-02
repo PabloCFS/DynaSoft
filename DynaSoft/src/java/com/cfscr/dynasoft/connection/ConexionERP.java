@@ -5,36 +5,27 @@
  */
 package com.cfscr.dynasoft.connection;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
- *
  * @author pablo.elizondo
  *
- * */
-/**
- * Conexion con DB
- * 
-**/
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-public class Conexion {
-       
+ * Conexion SQL Server - DB Utilizada por Softland
+ **/
+public class ConexionERP {
     public static Connection getConnection(){
-        
-        /*ERP*/
-        String ConexionUrl  = "jdbc:sqlserver://192.168.0.12:1433;"
+        String ConexionUrl = "jdbc:sqlserver://192.168.0.12:1433;"
             + "databaseName=Softland;"
             + "user=sa;"
             + "password=Sql2014!Pablo;"
             + "loginTimeout=30;";
-        
         try{
             Connection con = DriverManager.getConnection(ConexionUrl);
             return con;
         } catch(SQLException ex){
-            System.out.println(ex.toString());
             return null;
         }
     }

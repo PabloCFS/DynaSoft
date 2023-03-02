@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>423</y>
+      <w>96</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>DB Softland ERP
+--
++ dbo.LISTAR_FACTURAS_DYNASOFT
++ dbo.LISTAR_NOTAS_CREDITO_DYNASOFT
++ dbo.LISTAR_OTROS_CREDITOS_DYNASOFT</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>459</y>
+      <w>72</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>ConexionERP	
+--
+
+--
++ static Connection getConnection();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>516</y>
+      <w>147</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>DAOdocElectronico
+--
+- ResultSet rs;
+- final Connection cn;
+--
++ AarrayList&lt;DocumentosERP&gt; ListarDocsElectronicos(
+             ArrayList&lt;DocumentosERP docs&gt;, String pFecha1, String pFecha2);
+             		
+- DocumentosERP evaluaConsultas(ResultSet rs, char tipoConsulta);
+- float evaluaNumero(String tipo, float num);
+- float CRCtoUSD(float monto, float tipoCambio, String tipoMoneda);
+- String tipoDocumento(String tipoDocumento);
+- String perteneceA (String modulo);
+- String tipoMoneda(String moneda);
+- boolean eliminarOC(String aplicacion);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>111</x>
+      <y>51</y>
+      <w>147</w>
+      <h>429</h>
+    </coordinates>
+    <panel_attributes>DocumentosERP
+--
+- String aplicacion;
+- String documentoOC;
+- float monto;
+- String cliente;
+- String nombre;
+- String tipo;
+- String documento;
+- Date createDate;
+- String tipoAsiento;
+- String nitReceptor;
+- char contieneErrores;
+- char errorWS;
+- char errorSoftland;
+- char enviado;
+- String moneda;
+- float totalGravado;
+- float totalExento;
+- float totalVenta;
+- float totalDescuentos;
+- float totalVentaNeta;
+- float totalImpuesto;
+- float totalComprobante;
+- float totalFactura;
+- String crm;
+- float tipoCambio;
+--
++ DocumentosERP();
++ DocumentosERP(
+     String pAplicacion, String pDocumentoOC, float pMonto, String pCliente,
+     String pNombre, String pTipo, String pDocumento, Date pCreateDate,
+     String pTipoAsiento, String pNitReceptor, char pContieneErrores,
+     char pErrorWS, char pErrorSoftland, char pEnviado, String pMoneda,
+     float pTotalGravado, float pTotalExento, float pTotalVenta,
+     float pTotalDescuentos, float pTotalVentaNeta, float pTotalImpuesto,
+     float pTotalComprobante, float pTotalFactura, String pCrm,
+     float pTipoCambio);
+    
++ void setAplicacion(String pAplicacion);
++ void setDocumentoOC(String pDocumentoOC);
++ void setMonto(float pMonto);
++ void setCliente(String pCliente);
++ void setNombre(String pNombre);
++ void setTipo(String pTipo);
++ void setDocumento(String pDocumento);
++ void setCreateDate(Date pCreateDate);
++ void setTipoAsiento(String pTipoAsiento);
++ void setNitReceptor(String pNitReceptor);
++ void setContieneErrores(char pContieneErrores);
++ void setErrorWS(char pErrorWS);
++ void setErrorSoftland(char pErrorSoftland);
++ void setEnviado(char pEnviado);
++ void setMoneda(String pMoneda);
++ void setTotalGravado(float pTotalGravado);
++ void setTotalExento(float pTotalExento);
++ void setTotalVenta(float pTotalVenta);
++ void setTotalDescuentos(float pTotalDescuentos);
++ void setTotalVentaNeta(float pTotalVentaNeta);
++ void setTotalImpuesto(float pTotalImpuesto);
++ void setTotalComprobante(float pTotalComprobante);
++ void setTotalFactura(float pTotalFactura);
++ void setCrm(String pCrm);
++ void setTipoCambio(float pTipoCambio);
+
++ String getAplicacion();
++ String getDocumentoOC();
++ float getMonto();
++ String getCliente();
++ String getNombre();
++ String getTipo();
++ String getDocumento();
++ Date getCreateDate();
++ String getTipoAsiento();
++ String getNitReceptor();
++ char getContieneErrores();
++ char getErrorWS();
++ char getErrorSoftland();
++ char getEnviado();
++ String getMoneda();
++ float getTotalGravado();
++ float getTotalExento();
++ float getTotalVenta();
++ float getTotalDescuentos();
++ float getTotalVentaNeta();
++ float getTotalImpuesto();
++ float getTotalComprobante();
++ float getTotalFactura();
++ String getCrm();
++ float getTipoCambio();
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2058</x>
+      <y>345</y>
+      <w>30</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>SimpleClass</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>48</x>
+      <y>444</y>
+      <w>9</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>48</x>
+      <y>477</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>117</x>
+      <y>477</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>267</x>
+      <y>156</y>
+      <w>147</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>DocumentosCRM
+--
+- String oportunidad;
+- String tema;
+- String UEN;
+- String clientePotencial;
+- float ingresosReales;
+- float estProfit;
+- Date fechaCierre;
+- Date fechaEestimada;
+- String propietario;
+--
++ DocumentosCRM();
++ DocumentosCRM(
+    String pOportunidad, String pTema, String pUEN, String pClientePotencial, 
+    float pIngresosReales, float pEstProfit, Date pFechaCierre,
+    Date pFechaEstimada, String pPropietario);
+
++ void setOportunidad(String pOportunidad);
++ void setTema(String pTema);
++ void setUEN(String pUEN);
++ void setClientePotencial(String pClientePotencial);
++ void setIngresosReales(float pIngresosReales);
++ void setEstProfit(float pEstProfit);
++ void setFechaCierre(Date pFechaCierre);
++ void setFechaEstimada(Date pFechaEstimada);
++ void setPropietario(String pPropietario);
+
++ String getOportunidad();
++ String getTema();
++ String getUEN();
++ String getClientePotencial();
++ float getIngresosReales();
++ float getEstProfit();
++ Date getFechaCierre();
++ Date getFechaEstimada();
++ String getPropietario();
+
+
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>135</y>
+      <w>117</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>ClientePotencial
+--
+- String idCliente;
+- String nombreCliente;
+--
++ ClientePotencial();
++ ClientePotencial(String pIdCliente, String pNombreCliente);
++ void setIdCliente(String pIdCliente);
++ void setNombreCliente(String pNombreCliente);
++ String getIdCliente();
++ String getNombreCliente(); </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>921</x>
+      <y>408</y>
+      <w>147</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>DocumentoAgrupacion
+--
+- String oportunidad;
+- String tipo;
+- String nombreCliente;
+- String tema;
+- float monto;
+- float ingresoProfit;
+- float ingresoEstimado;
+- float totalVenta;
+- float totalFactura;
+- float diferencia;
+--
++ DocumentoAgrupacion();
++ DocumentoAgrupacion(
+       String pOportunidad, String pTipo, String pNombreCliente, String pTema,
+       float pMonto, float pIngresoProfit, float pIngresoEstimado,
+       float pTotalVenta, float pTotalFactura, float pDiferencia);
+
++ void setOportunidad(String pOportunidad);
++ void setTipo(String pTipo);
++ void setNombreCliente(String pNombreCliente);
++ void setTema(String pTema);
++ void setMonto(float pMonto);
++ void setIngresoProfit(float pIngresoProfit);
++ void setIngresoEstimado(float pIngresoEstimado);
++ void setTotalVenta(float pTotalVenta);
++ void setTotalFactura(float pTotalFactura);
++ void setDiferencia(float pDiferencia);
+
++ String getOportunidad();
++ String getTipo();
++ String getNombreCliente();
++ String getTema();
++ float getMonto();
++ float getIngresoProfit();
++ float getIngresoEstimado();
++ float getTotalVenta();
++ float getTotalFactura();
++ float getDiferencia();
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>918</x>
+      <y>63</y>
+      <w>147</w>
+      <h>237</h>
+    </coordinates>
+    <panel_attributes>DocumentoComparativa
+--
+- String oportunidad;
+- String tipo;
+- String cliente; 
+- String factura;
+- String tema;
+- float monto;
+- float ingresoProfit;
+- float ingresoEstimado; 
+- float totalVentaNeta; 
+- float totalFactura; 
+- float diferencia;
+- Date fechaEstimada; 
+- Date fecha;
+--
++ DocumentoComparativa();
++ DocumentoComparativa(
+        String pOportunidad, String pTipo, String pCliente, String pFactura,
+        String pTema, float pMonto, float pIngresoProfit, float pIngresoEstimado,
+        float pTotalVentaNeta, float pTotalFactura, float pDiferencia,
+        Date pFechaEstimada, Date pFecha);
+
++ void setOportunidad(String pOportunidad);
++ void setTipo(String pTipo);
++ void setCliente(String pCliente);
++ void setFactura(String pFactura);
++ void setTema(String pTema);
++ void setMonto(float pMonto);
++ void setIngresoProfit(float pIngresoProfit);
++ void setIngresoEstimado(float pIngresoEstimado);
++ void setTotalVentaNeta(float pTotalVentaNeta);
++ void setTotalFactura(float pTotalFactura);
++ void setDiferencia(float pDiferencia);
++ void setFechaEstimada(Date pFechaEstimada);
++ void setFecha(Date pFecha);
+
++ String getOportunidad();
++ String getTipo();
++ String getCliente();
++ String getFactura();
++ String getTema();
++ float getMonto();
++ float getIngresoProfit();
++ float getIngresoEstimado();
++ float getTotalVentaNeta();
++ float getTotalFactura();
++ float getDiferencia();
++ Date getFechaEstimada();
++ Date getFecha();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>186</y>
+      <w>111</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>PropietarioOp
+--
+- String idPropietario;
+- String nombrePropietario;
+--
++ PropietarioOp();
++ PropietarioOp();
++ void setIdPropietario(String pIdPropietario);
++ void setNombrePropietario(String pNombrePropietario);
+    
++ String getIdPropietario();
++ String getNombrePropietario();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>243</y>
+      <w>87</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Uen
+--
+- String idUEN;
+- String nombreUEN;
+--
++ Uen();
++ Uen(String pIdUEN, String pNombreUEN);
+
++ void setIdUEN(String pIdUEN);
++ void setNombreUEN(String pNombreUEN);
+
++ String getIdUEN();
++ String getNombreUEN();</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>102</y>
+      <w>198</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>DB CRM Dynamics
+--
++ https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/opportunities
++ https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/opportunities?$skiptoken=%3Ccookie%20pagenumber=%222%22%20pagingcookie=%22%253ccookie%2520page%253d%25221%2522%253e%253copportunityid%2520last%253d%2522%257bC42E05FB-4DA9-E711-813F-E0071B6A4261%257d%2522%2520first%253d%2522%257bDD37B14B-EE17-ED11-B83E-000D3A102BC2%257d%2522%2520%252f%253e%253c%252fcookie%253e%22%20istracking=%22False%22%20/%3E
++ https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/ap_uens
++ https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/accounts
++ https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/systemusers</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>159</y>
+      <w>141</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>WebServiceCRM
+--
+
+--
++ ArrayList&lt;DocumentosCRM&gt; realizaConsulta(
+         ArrayList&lt;DocumentosCRM&gt; docsCRM, String bodyAuthorization,
+         String bodyCookie, String fechaInicio, String fechaFin);
+
+- ArrayList&lt;DocumentosCRM&gt; documentosCRM(
+         JSONArray jsonArray, ArrayList&lt;DocumentosCRM&gt; docsCRM,
+         Date fechaInicio, Date fechaFinal);
+
+- ArrayList&lt;Uen&gt; cargaUENS(
+         JSONArray jsonArray, ArrayList&lt;Uen&gt; arrayUens);
+
+- ArrayList&lt;ClientePotencial&gt; cargarClientes(
+         JSONArray jsonArray, ArrayList&lt;ClientePotencial&gt; arrayClientes);
+
+- ArrayList&lt;PropietarioOp&gt; cargarPropietarios(
+         JSONArray jsonArray, ArrayList&lt;PropietarioOp&gt; arrayPropietarios);
+
+- Date StringToDate(String fecha);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>132</y>
+      <w>9</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>411</x>
+      <y>189</y>
+      <w>57</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>174</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>927</x>
+      <y>339</y>
+      <w>132</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>Agrupacion
+--
+
+--
++ ArrayList&lt;DocumentoAgrupacion&gt; agruparDocumentos(
+                       ArrayList&lt;DocmentoComparativa&gt; docComparativa, 
+                       ArrayList&lt;DocumentoAgrupacion&gt; docsAgrupapcion);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>369</y>
+      <w>9</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>771</x>
+      <y>63</y>
+      <w>114</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>Comparativa
+--
+
+--
++ ArrayList&lt;DocumentoComparativa&gt; comparaListas(
+           ArrayList&lt;DocumentosCRM&gt; docsCRM, 
+           ArrayList&lt;DocumentosERP&gt; docsERP, 
+           ArrayList&lt;DocumentoComparativa&gt; documentos);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>63</y>
+      <w>522</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1720.0;10.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>333</x>
+      <y>75</y>
+      <w>444</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1460.0;10.0;10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>63</y>
+      <w>42</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>297</y>
+      <w>9</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>207</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>252</y>
+      <w>36</w>
+      <h>9</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>684</x>
+      <y>594</y>
+      <w>204</w>
+      <h>51</h>
+    </coordinates>
+    <panel_attributes>EscrituraExcelComparativa
+--
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>351</y>
+      <w>513</w>
+      <h>249</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1690.0;810.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>327</x>
+      <y>327</y>
+      <w>459</w>
+      <h>273</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>1510.0;890.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>786</x>
+      <y>252</y>
+      <w>138</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;1140.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>801</x>
+      <y>414</y>
+      <w>126</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;600.0;400.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>246</x>
+      <y>627</y>
+      <w>129</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ServiceDocElectronicoImpl
+--
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>402</y>
+      <w>60</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;750.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>309</x>
+      <y>327</y>
+      <w>12</w>
+      <h>306</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>20.0;1000.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>327</x>
+      <y>357</y>
+      <w>606</w>
+      <h>276</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;900.0;2000.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>321</x>
+      <y>96</y>
+      <w>519</w>
+      <h>537</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;1770.0;1710.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>318</x>
+      <y>261</y>
+      <w>216</w>
+      <h>372</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;1220.0;700.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>171</x>
+      <y>546</y>
+      <w>81</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>250.0;320.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>525</y>
+      <w>555</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;380.0;1830.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>345</x>
+      <y>219</y>
+      <w>582</w>
+      <h>414</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;1360.0;1920.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>636</y>
+      <w>318</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;1040.0;10.0</additional_attributes>
+  </element>
+</diagram>
