@@ -153,6 +153,7 @@ public class Comparativa {
             documentos.add(miDocumento);
             docsERP.remove(i);
         }
+        
         return documentos;
     }
 }

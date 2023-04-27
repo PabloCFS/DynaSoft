@@ -1,13 +1,13 @@
-	ColumnasNecesarias					Excel 								PowerBI
-===> numero de oportunidad		4948							<=== new_contadorautonumerico
-===> Tema						LANDIS | MATELPA | MEDIDOR 2S	<=== name
+	ColumnasNecesarias				PowerBI
+===> numero de oportunidad      new_contadorautonumerico
+===> Tema						name
 
-===> UEN						UEN SMART CITIES				<=== _ap_uen_value 	   ===> 97284ec8-b79a-ea11-a811-000d3a531fbe ===> ap_uens  ---> ap_uenid  ---> ap_name				
-===> Cliente potencial			MATELPA							<=== _customerid_value ===> 0d74af43-a8a9-e011-8d85-1cc1dee89a5c ===> accounts ---> accountid ---> name
+===> UEN						_ap_uen_value               ===> ap_uens  ---> ap_uenid  ---> ap_name				
+===> Cliente potencial			_customerid_value 			===> accounts ---> accountid ---> name
 																	
-===> Ingresos reales			713,58							<=== actualvalue
-===> Est. profit				272,66							<=== new_estprofit
-===> Fecha de cierre real 		23/11/2022  09:07:39			<=== actualclosedate
-===> Fecha estimada de factura	30/11/2022						<=== new_estimatedbillingdate
+===> Ingresos reales			actualvalue
+===> Est. profit				new_estprofit
+===> Fecha de cierre real 		actualclosedate
+===> Fecha estimada de factura	new_estimatedbillingdate
 
-===> Propietario				Caterina Leandro				<=== _ownerid_value   ===> e4883443-3805-ec11-94ef-0022481d99a5 ===> systemusers ---> ownerid ---> yomifullname
+===> Propietario				_ownerid_value   			===> systemusers ---> ownerid ---> yomifullname

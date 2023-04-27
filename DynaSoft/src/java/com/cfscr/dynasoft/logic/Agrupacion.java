@@ -16,6 +16,9 @@ import java.util.ArrayList;
  */
 public class Agrupacion {
     //Funciona para agrupar documentos
+    
+    /**POR ACA VA EL ERROR*/
+    
     public ArrayList<DocumentoAgrupacion> agruparDocumentos(ArrayList<DocumentoComparativa> docComparativa, ArrayList<DocumentoAgrupacion> docsAgrupacion){
         
         for(int i=0; i<docComparativa.size(); i++){
@@ -48,19 +51,20 @@ public class Agrupacion {
                 documento.setIngresoEstimado(docComparativa.get(i).getIngresoEstimado());
                 documento.setTotalVenta(docComparativa.get(i).getTotalVentaNeta());
                 
-                while((docComparativa.get(i+1).getOportunidad().equals(docComparativa.get(i).getOportunidad())) && 
-                      (!docComparativa.get(i+1).getTipo().equals("Otro Crédito"))) {
+                int j = i + 1;
+                while((docComparativa.get(j).getOportunidad().equals(docComparativa.get(i).getOportunidad())) && 
+                      (!docComparativa.get(j).getTipo().equals("Otro Crédito"))) {
                     
-                    documento.setTotalVenta(documento.getTotalVenta() + docComparativa.get(i+1).getTotalVentaNeta());
-                    docComparativa.remove(i+1);
+                    documento.setTotalVenta(documento.getTotalVenta() + docComparativa.get(j).getTotalVentaNeta());
+                    j++;
                 }
-                
                 documento.setTotalFactura(docComparativa.get(i).getTotalFactura());
                 documento.setDiferencia(documento.getTotalVenta() - documento.getIngresoEstimado());
+                
+                i = j - 1;
             }
             docsAgrupacion.add(documento);
         }
-        
         return docsAgrupacion;
     }
 }

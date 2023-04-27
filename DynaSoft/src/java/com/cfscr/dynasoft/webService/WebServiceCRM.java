@@ -30,7 +30,7 @@ public class WebServiceCRM {
     
     //Retorna el vector de oportunidades
     public ArrayList<DocumentosCRM> realizaConsulta(ArrayList<DocumentosCRM> docsCRM, String bodyAuthorization, String bodyCookie, String fechaInicio, String fechaFin) {
-                                                                                System.out.println("\t\tWebServiceCRM Linea -> 33");
+
         String webApi = "https://cfssistemas1.api.crm.dynamics.com/api/data/v9.2/";
         String consultas[] = {webApi + "opportunities",
                               webApi + "opportunities?$skiptoken=%3Ccookie%20pagenumber=%222%22%20pagingcookie=%22%253ccookie%2520page%253d%25221%2522%253e%253copportunityid%2520last%253d%2522%257bC42E05FB-4DA9-E711-813F-E0071B6A4261%257d%2522%2520first%253d%2522%257bDD37B14B-EE17-ED11-B83E-000D3A102BC2%257d%2522%2520%252f%253e%253c%252fcookie%253e%22%20istracking=%22False%22%20/%3E",
@@ -57,7 +57,7 @@ public class WebServiceCRM {
                     case 1:
                         docsCRM = documentosCRM(jsonArray, docsCRM, StringToDate(fechaInicio), StringToDate(fechaFin));
                         break;
-                    case 2: 
+                    case 2:
                         uens = cargarUENS(jsonArray, uens);
                         break;
                     case 3:
@@ -91,7 +91,7 @@ public class WebServiceCRM {
         } catch (UnirestException ex){
             Logger.getLogger(WebServiceCRM.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("\t\tWebServiceCRM Linea -> 95");
+        
         return docsCRM;
     }
     
@@ -103,16 +103,28 @@ public class WebServiceCRM {
            
             //Evalua el rango de fechas que debe cargar
             if((!objetoJson.get("new_estimatedbillingdate").equals(null)) &&
-               (!objetoJson.get("_ap_uen_value").equals(null)) &&
+              ( (!objetoJson.get("_ap_uen_value").equals(null)) || (!objetoJson.get("new_tipodeoportunidad").equals(null)) ) &&
+                    
                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio)) &&
                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal)) &&
                (objetoJson.get("statecode").equals(1))
             ){
+                
                 DocumentosCRM docCRM = new DocumentosCRM();
                 
                 docCRM.setOportunidad((objetoJson.get("new_contadorautonumerico").equals(null)) ? null : objetoJson.getString("new_contadorautonumerico"));
                 docCRM.setTema((objetoJson.get("name").equals(null)) ? null : objetoJson.getString("name"));
-                docCRM.setUEN((objetoJson.get("_ap_uen_value").equals(null)) ? null : objetoJson.getString("_ap_uen_value"));
+                
+                docCRM.setUEN((objetoJson.get("_ap_uen_value").equals(null)) 
+                        
+                    ? (objetoJson.get("new_tipodeoportunidad").equals(null)) 
+                        
+                        ? null
+                        : segmento(objetoJson.getInt("new_tipodeoportunidad"))
+                        
+                    : objetoJson.getString("_ap_uen_value")
+                );
+                
                 docCRM.setClientePotencial((objetoJson.get("_customerid_value").equals(null)) ? null : objetoJson.getString("_customerid_value"));
                 docCRM.setIngresosReales((objetoJson.get("actualvalue").equals(null)) ? 0.f : objetoJson.getFloat("actualvalue"));
                 docCRM.setEstProfit((objetoJson.get("new_estprofit").equals(null)) ? 0.f : objetoJson.getFloat("new_estprofit"));
@@ -124,6 +136,30 @@ public class WebServiceCRM {
             }
         }
         return docsCRM;
+    }
+    
+    //Determina los segmentos sino hay UEN
+    private String segmento(int pSegmento){
+        String valor = "";
+        
+        switch(pSegmento){
+            case 100000000:
+                valor = "Solución Comercial";
+            break;
+            
+            case 200000000:
+                valor = "Venta Transaccional";
+            break;
+                
+            case 300000000:
+                valor = "Proyecto de Ingeniría";
+            break;        
+            
+            case 400000000:
+                valor = "Licitación";
+            break;
+        }
+        return valor;
     }
     
     //Cargar las UENS en el vector

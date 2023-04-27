@@ -87,7 +87,7 @@
                     <td class="text-center"><%=docsERPhtml.get(i).getTotalImpuesto()%></td>
                     <td class="text-center"><%=docsERPhtml.get(i).getTotalComprobante()%></td>
                     <td class="text-center"><%=docsERPhtml.get(i).getTotalFactura()%></td>
-                    <td class="text-center"><%=(docsERPhtml.get(i).getTipo().equals("Nota Crédito")) ? "-" : docsERPhtml.get(i).getCrm()%></td>
+                    <td class="text-center"><%=docsERPhtml.get(i).getCrm()%></td>
                     <td class="text-center"><%=docsERPhtml.get(i).getAplicacion()%>_</td>
                     <td class="text-center"><%=docsERPhtml.get(i).getDocumentoOC()%></td>
                     <td class="text-center"><%=docsERPhtml.get(i).getMonto()%></td>
