@@ -1,0 +1,359 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 jun. 2022, 10:58:41
+    Author     : pablo.elizondo
+*/
+
+/**Inclusion de Fuentes********************************************************/
+@font-face{
+    font-family: MontI;
+    src: url("../Sources/Fonts/Montserrat-Italic-VariableFont_wght.ttf");
+}
+@font-face{
+    font-family: Mont;
+    src: url("../Sources/Fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+/**Estilos del Body************************************************************/
+.body{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    background-image: url("../Sources/Images/eolicas.jpg");
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+}
+
+/*SECCION DE SELECCION DE FECHAS Y CONSULTA DE INFORMACION*/
+.section-listarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.container-listarDocs{
+    display: flex;
+    position: static;
+    
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.div-form{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 90%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.form-listarDocs{
+    display: flex;
+    position: static;
+    
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    
+    margin: 0 auto;
+    padding: 0px 0px 0px 0px;
+    
+    width: 90%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.columns-2{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+#div-boton-buscar{
+    width: 55%;
+}
+
+.columnsListarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0 auto;
+    padding: 0px 0px 0px 0px;
+    
+    width: 50%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    /*border: 2px red solid;*/
+}
+
+.label-listarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 125%;
+    line-height: 150%;
+    color: #000000;
+    text-align: center;
+}
+
+.date-listarDocs{
+    display: block;
+    position: static;
+    
+    margin: 0 auto;
+    padding: 1% 1% 1% 1%;
+    
+    width: 60%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 120%;
+    color: #000000;
+    text-align: center;
+    
+    background-color: #84DB00;
+    border-radius: 10px;
+}
+
+.text-listarDocs{
+   display: block;
+   position: static;
+   
+   margin: 0 auto;
+   padding: 1% 1% 1% 1%;
+   
+   width: 100%;
+   min-width: 1px;
+   max-width: none;
+   
+   height: auto;
+   min-height: 1px;
+   max-height: none;
+    
+   font-family: cursive;
+   font-weight: 400;
+   font-size: 100%;
+   line-height: 120%;
+   color: #000000;
+   
+   background-color: gray;
+   border-radius: 10px;
+}
+
+.button-submit-listarDocs{
+    display: flex;
+    position: relative;
+    
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    
+    margin: 0 auto;
+    padding: 5% 0px 5% 0px;
+    
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+    font-family: cursive;
+    font-weight: 400;
+    font-size: 120%;
+    line-height: 100%;
+    background-color: #84BD00;
+    color: #000000;
+    text-align: center;
+    
+    border-radius: 10px;
+}
+
+.imagenes-iconos{
+    display: block;
+    position: static;
+    
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    
+    width: 12%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.container-listarDocs2{
+    width: auto;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+    
+}
+
+.carousel{
+    margin: 1% 0.5% 0% 0.5%;  
+    padding: 0px 0px 0px 0px;
+    
+    width: 99%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+/*Seccion donde se muestra la tabla con la informacion del ERP*/
+.table{
+    width: 100%;
+    min-width: 1px;
+    max-width: none;
+    
+    height: auto;
+    min-height: 1px;
+    max-height: none;
+}
+
+.table-fixed tbody{
+    overflow-y: auto;
+    width: 100%;
+}
+
+.tr-thead-docs{
+    font-family: cursive;
+    font-weight: 100;
+    font-size: 75%;
+    line-height: 100%;
+    color: black;
+}
+
+.tr-tbody-docsERP{
+    font-family: cursive;
+    font-weight: 100;
+    font-size: 60%;
+    line-height: 100%;
+    color: black;
+    
+    background-color: RGB(255, 255, 255, 0.8)
+}
+
+#ocultar{
+    position: absolute;
+    
+    width: 1px;
+    min-width: 1px;
+    max-width: none;
+    
+    height: 1px;
+    min-height: 1px;
+    max-height: none;
+    
+    visibility: hidden;
+}
+
+/*Footer*/
+.footer{
+    display: block;
+    position: absolute;
+
+    bottom: 0;
+    
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+
+    background-color: RGB(110, 110, 110, 0.7);
+}
+
+
