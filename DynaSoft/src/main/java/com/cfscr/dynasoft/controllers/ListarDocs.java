@@ -10,9 +10,12 @@ import com.cfscr.dynasoft.entities.DocumentoComparativa;
 import com.cfscr.dynasoft.entities.DocumentosCRM;
 import com.cfscr.dynasoft.entities.DocumentosERP;
 import com.cfscr.dynasoft.services.ServiceDocElectronicoImpl;
+
 import jakarta.servlet.ServletConfig;
-import java.io.IOException;
 import jakarta.servlet.ServletException;
+
+import java.io.IOException;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,7 +38,6 @@ public class ListarDocs extends HttpServlet {
         String initial = config.getInitParameter("initial");
         serviceDocImpl = new ServiceDocElectronicoImpl();
     }
-            
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,11 +49,11 @@ public class ListarDocs extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
         
         response.setContentType("text/html;charset=utf-8");
-       
+
         String fecha1 = (request.getParameter("fecha1"));
         String fecha2 = (request.getParameter("fecha2"));
         String authorization = (request.getParameter("textAuthorization"));
@@ -65,7 +67,7 @@ public class ListarDocs extends HttpServlet {
         
         ArrayList<DocumentoComparativa> docsComparativa = new ArrayList<>();
         ArrayList<DocumentoAgrupacion> docsAgrupacion = new ArrayList<>();
-       
+
         docsERP = serviceDocImpl.obtenerERP(docsERP, fecha1, fecha2);
         docsCRM = serviceDocImpl.obtenerCRM(docsCRM, authorization, cookie, fecha1, fecha2);
         
@@ -89,7 +91,6 @@ public class ListarDocs extends HttpServlet {
         
         request.getRequestDispatcher("ListarDocsElectronicos.jsp").forward(request, response);
     }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

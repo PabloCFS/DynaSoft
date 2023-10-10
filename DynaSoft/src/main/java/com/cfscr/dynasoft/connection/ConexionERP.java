@@ -23,6 +23,9 @@ public class ConexionERP {
             + "password=Sql2014!Pablo;"
             + "loginTimeout=30;";
         try{
+
+            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+
             Connection con = DriverManager.getConnection(ConexionUrl);
             return con;
         } catch(SQLException ex){

@@ -26,7 +26,7 @@ public class DAOdocElectronico extends ConexionERP{
     
     //Extrae informacion de la DB | Retorna el vector de DocumentosERP
     public ArrayList<DocumentosERP> ListarDocsElectronicos(ArrayList<DocumentosERP> docs, String pFecha1, String pFecha2) {
-       
+
         try {
             CallableStatement csta = cn.prepareCall("SP_LISTAR_FACTURAS_DYNASOFT ?,?");
             
@@ -62,7 +62,7 @@ public class DAOdocElectronico extends ConexionERP{
 
             //Quitar OtrosCreditos
             for(int i=0; i<docs.size(); i++){
-                if((docs.get(i).getTipo().equals("Otro CrÃ©dito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
+                if((docs.get(i).getTipo().equals("Otro Crédito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
                     docs.remove(i);
                     i = i - 2;
                 }
@@ -190,15 +190,15 @@ public class DAOdocElectronico extends ConexionERP{
     //EVALUACION DE NEGATIVOS
     private float evaluaNumero(String tipo, float num){
         switch(tipo) {
-            case "Nota CrÃ©dito": 
+            case "Nota Crédito": 
                 num = num - (num * 2); 
                 break;
                 
-            case "Otro CrÃ©dito":
+            case "Otro Crédito":
                 num = num - (num * 2);
                 break;
                 
-            case "Factura ExportaciÃ³n":
+            case "Factura Exportación":
                 break;
             case "Factura":
                 break;
@@ -230,19 +230,19 @@ public class DAOdocElectronico extends ConexionERP{
                 break;
                 
             case "DE_FAC_EXP":
-                tipoDocumento = "Factura ExportaciÃ³n";
+                tipoDocumento = "Factura Exportación";
                 break;
                 
             case "DE_NC":
-                tipoDocumento = "Nota CrÃ©dito";
+                tipoDocumento = "Nota Crédito";
                 break;
                 
             case "N/C":
-                tipoDocumento = "Nota CrÃ©dito";
+                tipoDocumento = "Nota Crédito";
                 break;
                 
             case "O/C":
-                tipoDocumento = "Otro CrÃ©dito";
+                tipoDocumento = "Otro Crédito";
                 break;
         }
         return tipoDocumento;
@@ -252,7 +252,7 @@ public class DAOdocElectronico extends ConexionERP{
     private String perteneceA(String modulo){
         switch(modulo){
             case "FA":
-                modulo = "FacturaciÃ³n";
+                modulo = "Facturación";
                 break;
                 
             case "CC":
