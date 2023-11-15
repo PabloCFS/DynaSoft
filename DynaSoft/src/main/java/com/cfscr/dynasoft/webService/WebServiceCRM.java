@@ -100,7 +100,7 @@ public class WebServiceCRM {
         
         for(int i=0; i<jsonArray.length(); i++){
             JSONObject objetoJson = jsonArray.getJSONObject(i);
-           
+            
             //Evalua el rango de fechas que debe cargar
             if((!objetoJson.get("new_estimatedbillingdate").equals(null)) &&
               ( (!objetoJson.get("_ap_uen_value").equals(null)) || (!objetoJson.get("new_tipodeoportunidad").equals(null)) ) &&

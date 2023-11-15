@@ -25,7 +25,7 @@ public class Comparativa {
             
             for(int j=0; j<docsERP.size(); j++){
                 if(oportunidad.equals(docsERP.get(j).getCrm())){
-                    
+                
                     switch(docsERP.get(j).getTipo()){
                         case "Factura":
                             
@@ -97,16 +97,16 @@ public class Comparativa {
                             documentos.add(miDocumento3);
                         break;
                     }
-                    coinciden = true;
                     docsERP.remove(j);
                     j = j - 2;
-                    if(j < 0) j = 0;
+                    if(j < 0) j = -1;
+                    coinciden = true;
                 }
             }
             if(coinciden == true) {
                 docsCRM.remove(i);
                 i = i - 2;
-                if(i < 0) i = 0;
+                if(i < 0) i = -1;
             }
         }
         

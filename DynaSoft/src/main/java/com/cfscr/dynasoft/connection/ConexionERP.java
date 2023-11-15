@@ -17,10 +17,10 @@ import java.util.logging.Logger;
  **/
 public class ConexionERP {
     public static Connection getConnection(){
-        String ConexionUrl = "jdbc:sqlserver://192.168.0.12:1433;"
-            + "databaseName=Softland;"
-            + "user=sa;"
-            + "password=Sql2014!Pablo;"
+        String ConexionUrl = "jdbc:sqlserver://xxx.xxx.x.xx:1433;"
+            + "databaseName=xxxxx"
+            + "user=xxxxxx;"
+            + "password=xxxxxxxxxx;"
             + "loginTimeout=30;";
         try{
 

@@ -62,7 +62,7 @@ public class DAOdocElectronico extends ConexionERP{
 
             //Quitar OtrosCreditos
             for(int i=0; i<docs.size(); i++){
-                if((docs.get(i).getTipo().equals("Otro Crédito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
+                if((docs.get(i).getTipo().equals("Otro CrÃ©dito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
                     docs.remove(i);
                     i = i - 2;
                 }
@@ -190,15 +190,15 @@ public class DAOdocElectronico extends ConexionERP{
     //EVALUACION DE NEGATIVOS
     private float evaluaNumero(String tipo, float num){
         switch(tipo) {
-            case "Nota Crédito": 
+            case "Nota CrÃ©dito": 
                 num = num - (num * 2); 
                 break;
                 
-            case "Otro Crédito":
+            case "Otro CrÃ©dito":
                 num = num - (num * 2);
                 break;
                 
-            case "Factura Exportación":
+            case "Factura ExportaciÃ³n":
                 break;
             case "Factura":
                 break;
@@ -230,19 +230,19 @@ public class DAOdocElectronico extends ConexionERP{
                 break;
                 
             case "DE_FAC_EXP":
-                tipoDocumento = "Factura Exportación";
+                tipoDocumento = "Factura ExportaciÃ³n";
                 break;
                 
             case "DE_NC":
-                tipoDocumento = "Nota Crédito";
+                tipoDocumento = "Nota CrÃ©dito";
                 break;
                 
             case "N/C":
-                tipoDocumento = "Nota Crédito";
+                tipoDocumento = "Nota CrÃ©dito";
                 break;
                 
             case "O/C":
-                tipoDocumento = "Otro Crédito";
+                tipoDocumento = "Otro CrÃ©dito";
                 break;
         }
         return tipoDocumento;
@@ -252,7 +252,7 @@ public class DAOdocElectronico extends ConexionERP{
     private String perteneceA(String modulo){
         switch(modulo){
             case "FA":
-                modulo = "Facturación";
+                modulo = "FacturaciÃ³n";
                 break;
                 
             case "CC":
