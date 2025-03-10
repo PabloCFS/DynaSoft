@@ -17,7 +17,6 @@
         <title>CFS DynaSoft</title>
     </head>
     
-    
     <body class="body">
         <script src="JScript/table2excel.js"></script>
         <%@include file = "Templates/Header.jsp" %>
@@ -107,10 +106,12 @@
                     </button>
                 </div>
             </container>
+                    
+            <container>
+                <%@include file = "Templates/Footer.jsp"%>
+            </container>
         </section>
-        
-        <%@include file = "Templates/Footer.jsp"%>
-        
+                    
         <script>
             document.getElementById('download-Excel').addEventListener('click', function() {
                 var table2excel = new Table2Excel();

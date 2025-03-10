@@ -55,6 +55,10 @@ and open the template in the editor.
     height: auto;
     min-height: 1px;
     max-height: none;
+    
+    border-color: red;
+    border-style: dotted;
+    border-width: 3px;
 }
 
 .container-listarDocs{
@@ -344,16 +348,6 @@ and open the template in the editor.
 }
 
 /*Footer*/
-.footer{
-    display: block;
-    position: absolute;
-
-    bottom: 0;
-    
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
-
+#footer, #id-Footer{
     background-color: RGB(110, 110, 110, 0.7);
 }
-
-

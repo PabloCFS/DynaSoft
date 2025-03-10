@@ -17,7 +17,10 @@ import java.util.ArrayList;
 public class Agrupacion {
     //Funciona para agrupar documentos
     
-    /**POR ACA VA EL ERROR*/
+    /**POR ACA VA EL ERR
+     * @param docComparativa
+     * @param docsAgrupacion
+     * @return */
     
     public ArrayList<DocumentoAgrupacion> agruparDocumentos(ArrayList<DocumentoComparativa> docComparativa, ArrayList<DocumentoAgrupacion> docsAgrupacion){
         

@@ -102,36 +102,29 @@ public class WebServiceCRM {
             JSONObject objetoJson = jsonArray.getJSONObject(i);
             
             //Evalua el rango de fechas que debe cargar
-            if((!objetoJson.get("new_estimatedbillingdate").equals(null)) &&
-              
-                    ( (!objetoJson.get("_ap_uen_value").equals(null)) || (!objetoJson.get("new_tipodeoportunidad").equals(null)) ) &&
-                    
-               (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio)) &&
-               (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal)) &&
-               (objetoJson.get("statecode").equals(1))
+            if((!objetoJson.isNull("new_estimatedbillingdate")) 
+                    && ((!objetoJson.isNull("_ap_uen_value")) || (!objetoJson.isNull("new_tipodeoportunidad")) )
+                    && (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio))
+                    && (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal))
+                    && (objetoJson.get("statecode").equals(1))
             ){
                 
                 DocumentosCRM docCRM = new DocumentosCRM();
                 
-                docCRM.setOportunidad((objetoJson.get("new_contadorautonumerico").equals(null)) ? null : objetoJson.getString("new_contadorautonumerico"));
-                docCRM.setTema((objetoJson.get("name").equals(null)) ? null : objetoJson.getString("name"));
+                docCRM.setOportunidad((objetoJson.isNull("new_contadorautonumerico")) ? null : objetoJson.getString("new_contadorautonumerico"));
+                docCRM.setTema((objetoJson.isNull("name")) ? null : objetoJson.getString("name"));
                 
-                docCRM.setUEN((objetoJson.get("_ap_uen_value").equals(null)) 
-                        
-                    ? (objetoJson.get("new_tipodeoportunidad").equals(null)) 
-                        
-                        ? null
-                        : segmento(objetoJson.getInt("new_tipodeoportunidad"))
-                        
+                docCRM.setUEN((objetoJson.isNull("_ap_uen_value"))
+                    ? (objetoJson.isNull("new_tipodeoportunidad")) ? null : segmento(objetoJson.getInt("new_tipodeoportunidad"))
                     : objetoJson.getString("_ap_uen_value")
                 );
                 
-                docCRM.setClientePotencial((objetoJson.get("_customerid_value").equals(null)) ? null : objetoJson.getString("_customerid_value"));
-                docCRM.setIngresosReales((objetoJson.get("actualvalue").equals(null)) ? 0.f : objetoJson.getFloat("actualvalue"));
-                docCRM.setEstProfit((objetoJson.get("new_estprofit").equals(null)) ? 0.f : objetoJson.getFloat("new_estprofit"));
-                docCRM.setFechaCierre((objetoJson.get("actualclosedate").equals(null)) ? null : StringToDate(objetoJson.getString("actualclosedate")));
+                docCRM.setClientePotencial((objetoJson.isNull("_customerid_value")) ? null : objetoJson.getString("_customerid_value"));
+                docCRM.setIngresosReales((objetoJson.isNull("actualvalue")) ? 0.f : objetoJson.getFloat("actualvalue"));
+                docCRM.setEstProfit((objetoJson.isNull("new_estprofit")) ? 0.f : objetoJson.getFloat("new_estprofit"));
+                docCRM.setFechaCierre((objetoJson.isNull("actualclosedate")) ? null : StringToDate(objetoJson.getString("actualclosedate")));
                 docCRM.setFechaEstimada(StringToDate(objetoJson.getString("new_estimatedbillingdate")));
-                docCRM.setPropietario((objetoJson.get("_ownerid_value").equals(null)) ? null : objetoJson.getString("_ownerid_value"));
+                docCRM.setPropietario((objetoJson.isNull("_ownerid_value")) ? null : objetoJson.getString("_ownerid_value"));
                 
                 docsCRM.add(docCRM);
             }
