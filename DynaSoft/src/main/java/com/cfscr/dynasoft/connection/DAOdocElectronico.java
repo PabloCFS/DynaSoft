@@ -22,44 +22,46 @@ import java.util.logging.Logger;
  */
 public class DAOdocElectronico extends ConexionERP{
     private ResultSet rs;
-    private final Connection cn = ConexionERP.getConnection();
+    private Connection cn;
+    //private final Connection cn = ConexionERP.getConnection();
     
     //Extrae informacion de la DB | Retorna el vector de DocumentosERP
     public ArrayList<DocumentosERP> ListarDocsElectronicos(ArrayList<DocumentosERP> docs, String pFecha1, String pFecha2) {
 
         try {
-            CallableStatement csta = cn.prepareCall("SP_LISTAR_FACTURAS_DYNASOFT ?,?");
+            this.cn = ConexionERP.getConnection();
+            CallableStatement csta = this.cn.prepareCall("SP_LISTAR_FACTURAS_DYNASOFT ?,?");
             
             //Facturas
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
-            rs = csta.executeQuery();
-            while(rs.next()){
-                docs.add(evaluaConsultas(rs,'F'));
+            this.rs = csta.executeQuery();
+            while(this.rs.next()){
+                docs.add(evaluaConsultas(this.rs,'F'));
             }
             
             //Notas de Credito
             csta = cn.prepareCall("SP_LISTAR_NOTAS_CREDITO_DYNASOFT ?,?");
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
-            rs = csta.executeQuery();
-            while(rs.next()){
-                if(evaluaConsultas(rs, 'N').getTipoAsiento() != null){
-                    docs.add(evaluaConsultas(rs, 'N'));
+            this.rs = csta.executeQuery();
+            while(this.rs.next()){
+                if(evaluaConsultas(this.rs, 'N').getTipoAsiento() != null){
+                    docs.add(evaluaConsultas(this.rs, 'N'));
                 }
             }
-            
+
             //Otros Creditos
             csta = cn.prepareCall("SP_LISTAR_OTROS_CREDITOS_DYNASOFT ?,?");
             csta.setString(1, pFecha1);
             csta.setString(2, pFecha2);
-            rs = csta.executeQuery();
-            while(rs.next()){
-                if(evaluaConsultas(rs, 'O').getTipoAsiento() != null) {
-                    docs.add(evaluaConsultas(rs, 'O'));
+            this.rs = csta.executeQuery();
+            while(this.rs.next()){
+                if(evaluaConsultas(this.rs, 'O').getTipoAsiento() != null) {
+                    docs.add(evaluaConsultas(this.rs, 'O'));
                 }
             }
-
+            
             //Quitar OtrosCreditos
             for(int i=0; i<docs.size(); i++){
                 if((docs.get(i).getTipo().equals("Otro Crédito")) && (eliminarOC(docs.get(i).getAplicacion())) == true){
@@ -289,10 +291,8 @@ public class DAOdocElectronico extends ConexionERP{
         boolean esVerdadero = false;
         String [] vect = aplicacion.split(" ");
         
-        for(int i=0; i<vect.length; i++){
-            if((vect[i].equals("RETENCION")) || (vect[i].equals("2%")) || (vect[i].equals("DIFERENCIAL")) || (vect[i].equals("CAMBIARIO"))
-                || (vect[i].equals("20%")) || (vect[i].equals("25%")) || (vect[i].equals("RETENCIONES")) || (vect[i].equals("COMISION"))
-                || (vect[i].equals("COMISIONES")) || (vect[i].equals("BANCARIAS")) || (vect[i].equals("BANCARIA"))){
+        for (String vect1 : vect) {
+            if ((vect1.equals("RETENCION")) || (vect1.equals("2%")) || (vect1.equals("DIFERENCIAL")) || (vect1.equals("CAMBIARIO")) || (vect1.equals("20%")) || (vect1.equals("25%")) || (vect1.equals("RETENCIONES")) || (vect1.equals("COMISION")) || (vect1.equals("COMISIONES")) || (vect1.equals("BANCARIAS")) || (vect1.equals("BANCARIA"))) {
                 esVerdadero = true;
             }
         }

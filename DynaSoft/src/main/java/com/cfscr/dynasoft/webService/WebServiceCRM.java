@@ -79,7 +79,7 @@ public class WebServiceCRM {
                 }
                 for(int j=0; j<clientes.size(); j++){
                     if(docsCRM.get(i).getClientePotencial().equals(clientes.get(j).getIdCliente())){
-                        docsCRM.get(i).setClientePotencial(clientes.get(j).getNombreCliente());
+                        docsCRM.get(i).setClientePotencial(clientes.get(j).getNombreCliente() + clientes.get(j).getIdCliente());
                     }
                 }
                 for(int j=0; j<propietarios.size(); j++){
@@ -103,7 +103,8 @@ public class WebServiceCRM {
             
             //Evalua el rango de fechas que debe cargar
             if((!objetoJson.get("new_estimatedbillingdate").equals(null)) &&
-              ( (!objetoJson.get("_ap_uen_value").equals(null)) || (!objetoJson.get("new_tipodeoportunidad").equals(null)) ) &&
+              
+                    ( (!objetoJson.get("_ap_uen_value").equals(null)) || (!objetoJson.get("new_tipodeoportunidad").equals(null)) ) &&
                     
                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).after(fechaInicio)) &&
                (StringToDate(objetoJson.getString("new_estimatedbillingdate")).before(fechaFinal)) &&
@@ -189,8 +190,8 @@ public class WebServiceCRM {
             JSONObject objetoJson = jsonArray.getJSONObject(i);
             
             PropietarioOp propietarioOp = new PropietarioOp();
-            propietarioOp.setIdPropietario((objetoJson.get("ownerid").equals(null)) ? null : objetoJson.getString("ownerid") );
-            propietarioOp.setNombrePropietario((objetoJson.get("yomifullname").equals(null)) ? null : objetoJson.getString("yomifullname"));
+            propietarioOp.setIdPropietario((objetoJson.isNull("ownerid")) ? null : objetoJson.getString("ownerid") );
+            propietarioOp.setNombrePropietario((objetoJson.isNull("yomifullname")) ? null : objetoJson.getString("yomifullname"));
             arrayPropietarios.add(propietarioOp);
         }
         return arrayPropietarios;

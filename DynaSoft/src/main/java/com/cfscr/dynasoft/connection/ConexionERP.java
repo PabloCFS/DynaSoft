@@ -8,28 +8,26 @@ package com.cfscr.dynasoft.connection;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
  * @author pablo.elizondo
  *
  * Conexion SQL Server - DB Utilizada por Softland
  **/
 public class ConexionERP {
-    public static Connection getConnection(){
-        String ConexionUrl = "jdbc:sqlserver://xxx.xxx.x.xx:1433;"
-            + "databaseName=xxxxx"
-            + "user=xxxxxx;"
-            + "password=xxxxxxxxxx;"
-            + "loginTimeout=30;";
+    
+    private static final String URL = "jdbc:sqlserver://192.168.0.12:1433;databaseName=Softland";
+    private static final String USER = "SA";
+    private static final String PASSWORD = "Sql2014!Pablo";
+    
+    public static Connection getConnection() throws SQLException {
+        
         try{
-
-            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-
-            Connection con = DriverManager.getConnection(ConexionUrl);
-            return con;
-        } catch(SQLException ex){
-            return null;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch(ClassNotFoundException e){
+            throw new SQLException("No se encontró el driver JDBC.",e);
         }
+        
+        return DriverManager.getConnection(URL,USER,PASSWORD);        
     }
 }

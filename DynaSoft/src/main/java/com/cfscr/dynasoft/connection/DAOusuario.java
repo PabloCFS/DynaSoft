@@ -23,13 +23,14 @@ import java.util.ArrayList;
  **/
 public class DAOusuario extends ConexionERP{
     private ResultSet rs;
-    private final Connection cn = ConexionERP.getConnection();
+    //private final Connection cn = ConexionERP.getConnection();
     
     /** INSERTAR USUARIOS**/
     public void insertarUsuario(Usuario pUsuario){
         String SQL_INSERTAR = "SP_INSERTAR_USUARIO ?,?";
         
         try{
+            Connection cn = ConexionERP.getConnection();
             CallableStatement csta=cn.prepareCall(SQL_INSERTAR);
             
             csta.setString(1,pUsuario.getNombre());
@@ -45,6 +46,7 @@ public class DAOusuario extends ConexionERP{
     public boolean eliminar(String pNombre){
         String SQL_ELIMINAR = "SP_ELIMINAR_USUARIO ?";
         try{
+            Connection cn = ConexionERP.getConnection();
             CallableStatement csta = cn.prepareCall(SQL_ELIMINAR);
             csta.setString(1,pNombre);
             int n = csta.executeUpdate();
@@ -66,6 +68,7 @@ public class DAOusuario extends ConexionERP{
         CallableStatement csta;
                 
         try{
+            Connection cn = ConexionERP.getConnection();
              SQL_LISTAR = "LISTAR_USUARIOS";
             
             csta = cn.prepareCall(SQL_LISTAR);
@@ -89,6 +92,7 @@ public class DAOusuario extends ConexionERP{
         Usuario user = new Usuario();
         
         try{
+            Connection cn = ConexionERP.getConnection();
             String SQL_CONSULTAR_USUARIO = "SP_CONSULTAR_UN_USUARIO ?";
             
             CallableStatement csta = cn.prepareCall(SQL_CONSULTAR_USUARIO);
@@ -109,6 +113,7 @@ public class DAOusuario extends ConexionERP{
     /**MODIFICAR UN USUARIO**/
     public boolean actualizarUsuario(Usuario user){
         try{
+            Connection cn = ConexionERP.getConnection();
             String SQL_MODIFICAR_USUARIO = "SP_ACTUALIZAR_USUARIO ?,?";
             
             CallableStatement cst = cn.prepareCall(SQL_MODIFICAR_USUARIO);

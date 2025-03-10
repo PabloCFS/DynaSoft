@@ -34,8 +34,9 @@ public class ServiceDocElectronicoImpl implements ServiceDocElectronicoExt{
     
     @Override
     public ArrayList<DocumentosERP> obtenerERP(ArrayList<DocumentosERP> docsERP, String pFecha1, String pFecha2) {
+        
         docsERP = daoDocElectronico.ListarDocsElectronicos(docsERP, pFecha1, pFecha2);
-        escrituraExcel.cargarRegistrosERP(docsERP);
+        escrituraExcel.cargarRegistrosERP(docsERP);        
         return docsERP;
     }
 
